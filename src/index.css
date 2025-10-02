@@ -876,3 +876,257 @@ a {
   margin: 0;
 }
 /* Balance */
+
+/********** SD CSS Start ***********/
+
+/********** My Account css start **********/
+
+.myaccount-items ul {
+  padding: 0;
+  margin: 0px;
+}
+
+.myaccount-items ul li {
+  list-style: none;
+  padding: 13px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.4;
+  transition: all 0.2s ease;
+}
+
+.myaccount-items ul li svg {
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.myaccount-items ul li:nth-child(1) {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.myaccount-items ul li:hover {
+  opacity: 1;
+}
+
+.myaccount-items ul li.active {
+  opacity: 1;
+}
+
+.myaccount-items ul li.active svg {
+  color: #0769bf;
+}
+
+.myaccount-items ul li:hover svg {
+  color: #0769bf;
+}
+
+.dashboard-tab-txt h6 {
+  background: #0769bf;
+  padding: 16px;
+  font-family: "Fredoka";
+  color: #fff;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0px 0px 30px 0px;
+}
+
+.dashboard-tab-txt p span {
+  font-weight: 600;
+}
+
+.dashboard-tab-txt p a {
+  text-decoration-line: none;
+}
+
+.no-orders-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0769bf;
+  padding: 16px;
+}
+
+.no-orders-content p {
+  margin: 0px;
+  color: #fff;
+}
+
+.no-orders-content a {
+  text-decoration-line: none;
+  font-size: 12px;
+  color: #fff;
+}
+
+.billing-shipping-adress h2 {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 0px 0px 15px 0px;
+}
+
+.billing-shipping-adress button {
+  background: transparent;
+  border: none;
+  color: #0769bf;
+  margin: 0px 0px 15px 0px;
+}
+
+.billing-shipping-adress button:focus {
+  outline: none;
+}
+
+.payment-tab-content p {
+  margin: 0px;
+  padding: 16px;
+  background: #0769bf;
+  color: #fff;
+}
+
+.payment-tab-content {
+  margin: 0px 0px 30px 0px;
+}
+
+.payment-tab-btn button {
+  background-color: #333;
+  color: #fff;
+  font-size: 12px;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.6s ease;
+}
+
+.payment-tab-btn button:hover {
+  background-color: #0769bf;
+}
+
+.account-details-notice {
+  padding: 16px;
+  background-color: #0769bf;
+}
+
+.account-details-notice p {
+  color: #fff;
+  margin: 0px;
+}
+
+.account-input-field input{
+    width: 100%;
+    display: block;
+    padding: 7px;
+    border: 1px solid rgba(32, 7, 7, 0.8);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.account-input-field input:focus {
+  outline: none;
+}
+
+.account-input-field label {
+  line-height: 2;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.account-input-field {
+  margin: 0px 0px 40px 0px;
+}
+
+.account-input-field span {
+  font-style: italic;
+  display: block;
+  margin: 3px 0px 0px 0px;
+}
+
+.account-input-field label span {
+  font-weight: bold;
+  font-style: normal;
+  margin-top: -4px;
+}
+
+.account-input-field p {
+  margin: 0px 0px 5px 0px;
+}
+
+.low-margin-fields {
+  margin: 0px 0px 15px 0px !important;
+}
+
+
+.account-detail-savebtn button {
+    padding: 14px 22px;
+    font-size: 12px;
+    border: none;
+    color: #fff;
+    margin: 20px 0px 0px 0px;
+    background: #0769bf;
+    transition: all .6s ease;
+}
+
+.account-detail-savebtn button:focus {
+  outline: none;
+}
+
+.account-detail-savebtn button:hover {
+      background: #0769bfc4;
+}
+
+
+.billing-input-field input {
+    width: 100%;
+    display: block;
+    padding: 5px 7px;
+    border: 1px solid rgba(32, 7, 7, 0.8);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.billing-input-field input:focus {
+  outline: none;
+}
+
+.billing-input-field label {
+    margin: 0px 0px 5px 0px;
+}
+
+.billing-input-field {
+    margin: 0px 0px 15px 0px;
+}
+
+.billing-form-head h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin: 0px 0px 10px 0px;
+}
+ 
+
+.billing-save-btn button {
+    border: none;
+    padding: 13px 22px;
+    font-size: 12px;
+    background: #0769bf;
+    color: #fff;
+    transition: all .6s ease;
+}
+
+.billing-save-btn button:hover {
+    background: #0769bfd6;
+}
+
+
+.billing-save-btn button:focus {
+    outline: none;
+}
+
+
+.billing-input-field label span {
+    font-weight: 700;
+}
+
+
+
+/********** My Account css End **********/

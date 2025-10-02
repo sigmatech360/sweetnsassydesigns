@@ -10,6 +10,7 @@ import Cart from "../screens/Cart";
 import Checkout from "../screens/Checkout";
 import Wishlist from "../screens/Wishlist";
 import Balance from "../screens/Balance";
+import MyAcocunt from "../screens/MyAccount/MyAcocunt";
 
 // Import your components/pages
 
@@ -26,6 +27,7 @@ const AppRouter = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/balance" element={<Balance />} />
+        <Route path="/my-account" element={<MyAcocunt />} />
       </Routes>
     </Router>
   );
