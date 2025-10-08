@@ -22,26 +22,11 @@ const Shop = () => {
 
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/shop">Shop</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-
-            <div className="col-md-12">
               <h1 className="pageTitle colorBlack">Shop</h1>
             </div>
-
             <div className="woocommerce-filters mb-4">
               <div className="woocommerce-breadcrumb">
                 <nav aria-label="breadcrumb" className="themeBreadCrumb">
@@ -74,7 +59,7 @@ const Shop = () => {
             </div>
 
             {currentProducts.map((item, index) => (
-              <div className="col-lg-3 mb-4" key={index}>
+              <div className="col-lg-3 col-md-6 mb-4" key={index}>
                 <div className="productCard">
                   <div className="productCardImg">
                     <img
@@ -87,7 +72,7 @@ const Shop = () => {
                       alt={item.name}
                       className="img2 img-fluid"
                     />
-                    <button className="shopBtn">Select Options</button>
+                    <Link to={`/product/${item.id}`} className="shopBtn">Select Options</Link>
                   </div>
                   <div className="productCardContent text-start">
                     <h4 className="productCardName">{item.name}</h4>
@@ -158,7 +143,6 @@ const Shop = () => {
             </div>
           </div>
         </div>
-      </main>
     </DefaultLayout>
   );
 };

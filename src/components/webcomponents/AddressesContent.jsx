@@ -56,7 +56,7 @@ const AddressesContent = () => {
             {activeForm === "shipping" && (
               <div className="col-lg-12">
                 <ShippingForm />
-                <button onClick={() => setActiveForm(null)}>Back</button>
+                {/* <button onClick={() => setActiveForm(null)}>Back</button> */}
               </div>
             )}
           </div>

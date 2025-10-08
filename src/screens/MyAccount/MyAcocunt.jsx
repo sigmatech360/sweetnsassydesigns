@@ -25,22 +25,7 @@ const MyAcocunt = () => {
 
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/my-account"> My account</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-          </div>
           <div className="row">
             <div className="col-lg-4">
               <div className="myaccount-items">
@@ -70,7 +55,6 @@ const MyAcocunt = () => {
             </div>
           </div>
         </div>
-      </main>
     </DefaultLayout>
   );
 };

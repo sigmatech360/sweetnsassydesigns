@@ -42,22 +42,8 @@ const Wishlist = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/wishlist">Wishlist</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-
-            <div className="col-md-12">
               <h1 className="pageTitle colorBlack">My wishlist</h1>
             </div>
-
             <div className="col-md-12">
               <div className="wishlistData mb-5">
                 <table className="table table-bordered">

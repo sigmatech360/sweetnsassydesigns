@@ -1,4 +1,5 @@
 import React from "react";
+import { countriesData, statesData } from "../../data";
 
 const BillingForm = () => {
   return (
@@ -39,7 +40,14 @@ const BillingForm = () => {
                     <div className="billing-input-field">
                       <label htmlFor="">Country / Region <span className="colorBlue">*</span>
                       </label>
-                      <input type="email" name="" id="" />
+                        <select className="billing-country-select" >
+                        <option value="">Select a country / region…</option>
+                        {countriesData.map((country) => (
+                          <option key={country.code} value={country.code}>
+                            {country.name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                    <div className="col-lg-12">
@@ -61,13 +69,18 @@ const BillingForm = () => {
                   </div>
                   <div className="col-lg-12">
                     <div className="billing-input-field">
-                      <label htmlFor="">Department <span className="colorBlue">*</span></label>
-                      <input type="text" name="" id="" />
+                      <label htmlFor="">State <span className="colorBlue">*</span></label>
+                       <select className="billing-country-state">
+                          <option value="">Select a option..</option>
+                          {statesData.map((state) => (
+                            <option key={state.value} value={state.label}>{state.label}</option>
+                          ))}
+                       </select>
                     </div>
                   </div>
                   <div className="col-lg-12">
                     <div className="billing-input-field">
-                      <label htmlFor="">Postcode / ZIP <span className="colorBlue">*</span></label>
+                      <label htmlFor="">ZIP Code  <span className="colorBlue">*</span></label>
                       <input type="text" name="" id="" />
                     </div>
                   </div>

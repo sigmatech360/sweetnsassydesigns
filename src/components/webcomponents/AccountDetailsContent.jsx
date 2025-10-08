@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AccountDetailsContent = () => {
+
+  const [showCurrent, setShowCurrent] = useState(false);
+  const [showNew, setShowNew] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
   return (
     <>
       <div className="account-details-tab">
         <div className="container">
           <div className="row">
-            {/* <div className="col-lg-12">
+            <div className="col-lg-12">
               <div className="account-details-notice">
                 <p>
                   Your account with Sweet N Sassy Designs is using a temporary
                   password. We emailed you a link to change your password.
                 </p>
               </div>
-            </div> */}
+            </div>
             <div className="col-lg-12">
               <div className="account-detail-tab-form">
                 <form action="">
@@ -55,19 +61,34 @@ const AccountDetailsContent = () => {
                       <label htmlFor="">
                         Current password (leave blank to leave unchanged)
                       </label>
-                      <input type="text" name="" id="" />
+                      <div className="password-field">
+                          <input type={showCurrent ? "text" : "password"} />
+                          <span className="eye-icon" onClick={() => setShowCurrent(!showCurrent)}>
+                            {showCurrent ? <FaEyeSlash /> : <FaEye />}
+                          </span>
+                        </div>
                     </div>
                   </div>
                   <div className="col-lg-12">
                     <div className="account-input-field low-margin-fields">
                       <label htmlFor="">New password (leave blank to leave unchanged)</label>
-                      <input type="text" name="" id="" />
+                      <div className="password-field">
+                          <input type={showNew ? "text" : "password"} />
+                          <span className="eye-icon" onClick={() => setShowNew(!showNew)}>
+                            {showNew ? <FaEyeSlash /> : <FaEye/>}
+                          </span>
+                        </div>
                     </div>
                   </div>
                    <div className="col-lg-12">
                     <div className="account-input-field low-margin-fields">
                       <label htmlFor="">Confirm new password</label>
-                      <input type="text" name="" id="" />
+                      <div className="password-field">
+                          <input type={showConfirm ? "text" : "password"} />
+                          <span className="eye-icon" onClick={() => setShowConfirm(!showConfirm)}>
+                            {showConfirm ? <FaEyeSlash /> : <FaEye />}
+                          </span>
+                        </div>
                     </div>
                   </div>
                   <div className="col-lg-12">

@@ -4,7 +4,6 @@ import DefaultLayout from "../../components/DefaultLayout";
 const NeedSheets = () => {
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <section className="newDesignSec">
           <div className="container">
             <div className="row">
@@ -36,7 +35,6 @@ const NeedSheets = () => {
             </div>
           </div>
         </section>
-      </main>
     </DefaultLayout>
   );
 };

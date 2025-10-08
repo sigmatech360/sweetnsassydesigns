@@ -9,21 +9,6 @@ const Login = () => {
       <main className="manPageContent">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/login">My account</Link>
-                  </li>
-                  {/* <li className="breadcrumb-item active" aria-current="page">
-                  Data
-                </li> */}
-                </ol>
-              </nav>
-            </div>
             <div className="col-lg-6">
               <div className="authForms">
                 <Tabs

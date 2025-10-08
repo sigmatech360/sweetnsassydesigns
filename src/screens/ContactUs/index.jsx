@@ -5,26 +5,6 @@ import { Link } from "react-router-dom";
 const ContactUs = () => {
   return (
     <DefaultLayout>
-      <main className="manPageContent">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/contact-us">Contact Us</Link>
-                  </li>
-                  {/* <li className="breadcrumb-item active" aria-current="page">
-                  Data
-                </li> */}
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </div>
         <section className="newDesignSec">
           <div className="container">
             <div className="row">
@@ -125,7 +105,6 @@ const ContactUs = () => {
             </div>
           </div>
         </section>
-      </main>
     </DefaultLayout>
   );
 };

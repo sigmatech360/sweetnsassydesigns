@@ -6,27 +6,6 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <DefaultLayout>
-      <main className="manPageContent">
-        <div className="container">
-          <div className="col-md-12">
-            <nav aria-label="breadcrumb" className="themeBreadCrumb">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="breadcrumb-item">
-                  <Link to="#">Library</Link>
-                </li>
-                <li className="breadcrumb-item active" aria-current="page">
-                  Data
-                </li>
-              </ol>
-            </nav>
-          </div>
-          <div className="col-md-12">
-            <h1 className="pageTitle">Home</h1>
-          </div>
-        </div>
         <section className="newDesignSec">
           <div className="container">
             <div className="row">
@@ -36,7 +15,7 @@ const Home = () => {
                 </div>
               </div>
               {newDesignProducts.map((item, index) => (
-                <div className="col-lg-3 mb-4" key={index}>
+                <div className="col-lg-3 col-md-6 mb-4" key={index}>
                   <div className="productCard">
                     <div className="productCardImg">
                       <img
@@ -71,7 +50,7 @@ const Home = () => {
                 </div>
               </div>
               {shopOurProducts.map((item, index) => (
-                <div className="col-lg-3 mb-4" key={index}>
+                <div className="col-lg-3 col-md-6 mb-4" key={index}>
                   <div className="productCard">
                     <div className="productCardImg">
                       <img
@@ -98,7 +77,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
         <section className="newDesignSec">
           <div className="container">
             <div className="row">
@@ -119,7 +97,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </main>
     </DefaultLayout>
   );
 };

@@ -11,22 +11,8 @@ const Cart = () => {
   const [itemsInCart, setItemsInCart] = useState(true);
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/cart">Cart</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-
             {itemsInCart === true ? (
               <>
                 <div className="cartItemsSec">
@@ -154,7 +140,6 @@ const Cart = () => {
             )}
           </div>
         </div>
-      </main>
     </DefaultLayout>
   );
 };

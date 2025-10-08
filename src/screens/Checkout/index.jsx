@@ -12,22 +12,8 @@ const Checkout = () => {
   const [showAddAppartment, setshowAddAppartment] = useState(false);
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/checkout">Checkout</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-
             <div className="col-md-12">
               <div className="cart-points-message">
                 <img src={checkoutAlertIcon} alt="" />
@@ -200,7 +186,6 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-      </main>
     </DefaultLayout>
   );
 };

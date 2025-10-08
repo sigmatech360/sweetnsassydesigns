@@ -7,22 +7,8 @@ import balanceCheckIcon from "../../assets/images/balanceCheckIcon.svg";
 const Balance = () => {
   return (
     <DefaultLayout>
-      <main className="manPageContent">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <nav aria-label="breadcrumb" className="themeBreadCrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/balance">Balance</Link>
-                  </li>
-                </ol>
-              </nav>
-            </div>
-
             <div className="pwgc-balance-form">
               <img
                 src={balanceCheckIcon}
@@ -41,7 +27,6 @@ const Balance = () => {
             </div>
           </div>
         </div>
-      </main>
     </DefaultLayout>
   );
 };
