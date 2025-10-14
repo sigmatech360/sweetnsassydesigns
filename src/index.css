@@ -769,12 +769,13 @@ a {
   text-align: center;
   font-size: 14px;
   vertical-align: middle;
+  padding: 20px 20px;
 }
 .wishlistData table td a {
   text-decoration: none;
 }
 .wishlistData-removeBtn {
-  margin: 0 auto;
+  margin: 15px auto;
   display: block;
   border: unset;
   background: unset;

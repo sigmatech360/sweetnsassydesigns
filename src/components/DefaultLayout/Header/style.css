@@ -299,7 +299,7 @@ button.mobile-search-btn {
 .cart-dropdown-menu {
   position: absolute;
   right: 0;
-  top: 30px;
+  top: 40px;
   width: 300px;
   background: #fff;
   border: 1px solid #eee;
@@ -407,6 +407,16 @@ button.mobile-search-btn {
   border-radius: 4px;
   text-decoration: none;
   font-size: 12px;
+}
+
+
+.header-nocaritems {
+    font-size: 18px !important;
+    position: relative;
+}
+
+li.header-nocaritems p {
+    margin: 0px;
 }
 
 @media (max-width: 1199px) {

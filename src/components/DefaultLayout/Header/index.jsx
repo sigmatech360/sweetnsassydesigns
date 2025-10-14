@@ -7,13 +7,9 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 import Container from "react-bootstrap/Container";
-
 import logo from "../../../assets/images/headerLogo.webp";
-
 import "./style.css";
-import { Dropdown, NavDropdown } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
 import { useCart } from "../../../context/CartContext";
 
@@ -26,12 +22,14 @@ const Header = () => {
 
   return (
     <>
+      {/* ======= Top Header ======= */}
       <section className="headerTop">
         <Container>
           <div className="headerTopContent">
-            <Link to={"/"} className="navbar-brand">
+            <Link to="/" className="navbar-brand">
               <img src={logo} alt="Texas Logo" />
             </Link>
+
             <div className="headerSearchBar desktop-search">
               <IoSearch size={22} />
               <input
@@ -40,6 +38,7 @@ const Header = () => {
                 className="form-control"
               />
             </div>
+
             <div className="header-icons">
               <button
                 className="mobile-search-btn"
@@ -47,13 +46,16 @@ const Header = () => {
               >
                 <IoSearch size={22} />
               </button>
+
               <Link to="/login">
                 <FaRegUser />
               </Link>
+
               <button className="shopping-cart">
                 <FaShoppingBasket />
                 <span className="cartCounter">{cartCount}</span>
               </button>
+
               <button
                 className="mobile-menu-btn"
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -65,6 +67,7 @@ const Header = () => {
         </Container>
       </section>
 
+      {/* ======= Desktop Header ======= */}
       <header className="header-main d-none d-lg-block">
         <div className="container">
           <div className="row">
@@ -113,6 +116,8 @@ const Header = () => {
                 </ul>
               </div>
             </div>
+
+            {/* ======= Cart / User ======= */}
             <div className="col-lg-4">
               <div className="header-end">
                 <ul>
@@ -121,6 +126,7 @@ const Header = () => {
                       <FaRegUser />
                     </Link>
                   </li>
+
                   <li
                     className="cart-dropdown"
                     onMouseEnter={() => setIsShopOpen(false)}
@@ -133,47 +139,64 @@ const Header = () => {
                         )}
                       </div>
                     </Link>
-                    {cartCount > 0 && (
-                      <ul className="cart-dropdown-menu">
-                        {cartItems.map((item) => (
-                          <li key={item.id} className="cart-item">
-                            <div className="cart-item-image">
-                              <img
-                                src={item.productImages.front}
-                                alt={item.name}
-                              />
-                            </div>
-                            <div className="cart-item-info">
-                              <p className="cart-item-name">{item.name}</p>
-                              <p className="cart-item-price">
-                                {item.quantity} × $
-                                {parseFloat(item.price).toFixed(2)}
-                              </p>
-                            </div>
-                            <button
-                              className="remove-cart-item"
-                              onClick={() => removeFromCart(item.id)}
-                            >
-                              ×
-                            </button>
-                          </li>
-                        ))}
 
-                        <li className="cart-subtotal">
-                          <span>Subtotal:</span>
-                          <strong>${cartItems.reduce((total, item) => total + item.quantity * parseFloat(item.price),0).toFixed(2)}
-                          </strong>
+                    {/* ======= Cart Dropdown ======= */}
+                    <ul className="cart-dropdown-menu">
+                      {cartCount > 0 ? (
+                        <>
+                          {cartItems.map((item) => (
+                            <li key={item.id} className="cart-item">
+                              <div className="cart-item-image">
+                                <img
+                                  src={item.productImages.front}
+                                  alt={item.name}
+                                />
+                              </div>
+                              <div className="cart-item-info">
+                                <p className="cart-item-name">{item.name}</p>
+                                <p className="cart-item-price">
+                                  {item.quantity} × $
+                                  {parseFloat(item.price).toFixed(2)}
+                                </p>
+                              </div>
+                              <button
+                                className="remove-cart-item"
+                                onClick={() => removeFromCart(item.id)}
+                              >
+                                ×
+                              </button>
+                            </li>
+                          ))}
+
+                          <li className="cart-subtotal">
+                            <span>Subtotal:</span>
+                            <strong>
+                              $
+                              {cartItems
+                                .reduce(
+                                  (total, item) =>
+                                    total +
+                                    item.quantity * parseFloat(item.price),
+                                  0
+                                )
+                                .toFixed(2)}
+                            </strong>
+                          </li>
+                          <li className="cart-buttons">
+                            <Link to="/cart" className="view-cart-btn">
+                              View Cart
+                            </Link>
+                            <Link to="/checkout" className="checkout-btn">
+                              Checkout
+                            </Link>
+                          </li>
+                        </>
+                      ) : (
+                        <li className="header-nocaritems">
+                          <p>No products in the cart.</p>
                         </li>
-                        <li className="cart-buttons">
-                          <Link to="/cart" className="view-cart-btn">
-                            View Cart
-                          </Link>
-                          <Link to="/checkout" className="checkout-btn">
-                            Checkout
-                          </Link>
-                        </li>
-                      </ul>
-                    )}
+                      )}
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -182,7 +205,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* ======= Mobile Menu ======= */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="mobile-menu">
           <div className="mobile-menu-header">
@@ -203,10 +226,14 @@ const Header = () => {
                 onClick={() => setIsMobileShopOpen(!isMobileShopOpen)}
               >
                 <Link to="/shop">Shop </Link>
-                <FaChevronDown className={isMobileShopOpen ? "rotate" : ""} />
+                <FaChevronDown
+                  className={isMobileShopOpen ? "rotate" : ""}
+                />
               </button>
               <ul
-                className={`mobile-submenu ${isMobileShopOpen ? "open" : ""}`}
+                className={`mobile-submenu ${
+                  isMobileShopOpen ? "open" : ""
+                }`}
               >
                 <li>
                   <Link
@@ -225,7 +252,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/cart" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    to="/cart"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     Cart
                   </Link>
                 </li>
@@ -247,7 +277,6 @@ const Header = () => {
                 </li>
               </ul>
             </li>
-
             <li>
               <Link
                 to="/need-sheets"
@@ -257,7 +286,10 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/contact-us" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link
+                to="/contact-us"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 Contact Us
               </Link>
             </li>
@@ -265,7 +297,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Search Overlay */}
+      {/* ======= Mobile Search Overlay ======= */}
       <div className={`mobile-search-overlay ${isSearchOpen ? "open" : ""}`}>
         <div className="mobile-search-box">
           <input type="text" placeholder="Search for products..." autoFocus />
