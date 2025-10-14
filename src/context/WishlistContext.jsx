@@ -19,9 +19,7 @@ export const WishlistProvider = ({ children }) => {
   };
 
   const removeFromWishlist = (id) => {
-    setWishlistItems((prevItems) =>
-      prevItems.filter((item) => item.id !== id)
-    );
+    setWishlistItems((prevItems) => prevItems.filter((item) => item.id !== id)); 
   };
 
     const isInWishlist = (id) => wishlistItems.some((item) => item.id === id);
