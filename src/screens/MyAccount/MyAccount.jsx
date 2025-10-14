@@ -15,9 +15,12 @@ import { HiMiniHome } from "react-icons/hi2";
 import { MdPayment } from "react-icons/md";
 import { FaRegFileAlt, FaUser } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
+import { useAuth } from "../../context/AuthContext";
 
-const MyAcocunt = () => {
+const MyAccount = () => {
   const [selectedMenu, setSelectedMenu] = useState("dashboard");
+  const { logout } = useAuth();
+
 
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);
@@ -37,7 +40,7 @@ const MyAcocunt = () => {
                   <li  className={selectedMenu === "paymentMethods" ? "active" : ""} onClick={() => handleMenuClick("paymentMethods")}><MdPayment /> Payment methods</li>
                   <li  className={selectedMenu === "accountDetails" ? "active" : ""} onClick={() => handleMenuClick("accountDetails")}><FaUser /> Account details</li>
                   <li  className={selectedMenu === "myPoints" ? "active" : ""} onClick={() => handleMenuClick("myPoints")}><FaRegFileAlt /> My Points</li>
-                  <li  className={selectedMenu === "logout" ? "active" : ""} onClick={() => handleMenuClick("logout")}><HiOutlineLogout /> Log out</li>
+                  <li  className={selectedMenu === "logout" ? "active" : ""} onClick={logout}><HiOutlineLogout /> Log out</li>
                 </ul>
               </div>
             </div>
@@ -50,7 +53,6 @@ const MyAcocunt = () => {
                 {selectedMenu === "paymentMethods" && <PaymentMethodsContent />}
                 {selectedMenu === "accountDetails" && <AccountDetailsContent />}
                 {selectedMenu === "myPoints" && <MyPointsContent />}
-                {selectedMenu === "logout" && <div>Logging out...</div>}
               </div>
             </div>
           </div>
@@ -59,4 +61,4 @@ const MyAcocunt = () => {
   );
 };
 
-export default MyAcocunt;
+export default MyAccount;

@@ -461,7 +461,6 @@ a {
   line-height: normal;
 }
 
-
 .cart-item-qtySelector {
   display: flex;
   align-items: center;
@@ -949,8 +948,17 @@ a {
   font-weight: 600;
 }
 
-.dashboard-tab-txt p a {
-  text-decoration-line: none;
+.dashboard-tab-txt p button {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-family: "Fredoka";
+  padding: 0px;
+  color: #0769bf;
+}
+
+.navbar-brand:focus {
+    outline: none !important;
 }
 
 .no-orders-content {
@@ -1647,12 +1655,11 @@ table.additional-information-table tbody tr td {
 
   .page-content {
     margin: 50px 0px 0px 0px;
-}
+  }
 
-.order-table-box {
+  .order-table-box {
     overflow-x: auto;
-}
-
+  }
 }
 
 @media only screen and (max-width: 600px) {
