@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAuth } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
-const DashboardContent = () => {
+const DashboardContent = ({ handleMenuClick }) => {
 
    const { user, logout } = useAuth();
 
@@ -12,9 +13,9 @@ const DashboardContent = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="dashboard-tab-txt">
-                <h6>Your account with Sweet N Sassy Designs is using a temporary password. We emailed you a link to change your password.</h6>
-                <p>Hello <span> {user?.email} </span>(not <span>user@user.com</span>? <button onClick={logout}>Logout</button>)</p>
-                <p>From your account dashboard you can view your <a href="">recent orders</a>, manage your <a href="">shipping and billing addresses,</a> and <a href="">edit your password and account details.</a></p>
+                {user?.password_changed === "0" && (<h6>Your account with Sweet N Sassy Designs is using a temporary password. We emailed you a link to change your password.</h6>)}
+                <p>Hello <span>{user?.username} </span>(not <span>{user?.email}</span>? <button onClick={logout}>Logout</button>)</p>
+                <p>From your account dashboard you can view your <Link onClick={() => handleMenuClick("orders")}>recent orders</Link>, manage your <Link onClick={() => handleMenuClick("addresses")}>shipping and billing addresses,</Link> and <Link onClick={() => handleMenuClick("accountDetails")}>edit your password and account details.</Link></p>
               </div>
             </div>
           </div>

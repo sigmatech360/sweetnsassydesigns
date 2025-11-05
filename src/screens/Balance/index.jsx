@@ -10,18 +10,9 @@ const Balance = () => {
         <div className="container">
           <div className="row">
             <div className="pwgc-balance-form">
-              <img
-                src={balanceCheckIcon}
-                className="pwgc-balance-form-icon"
-                alt=""
-              />
+              <img src={balanceCheckIcon} className="pwgc-balance-form-icon" alt=""/>
               <div className="pwgc-balance-number-container">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Gift Card Number"
-                  required
-                />
+                <input type="text" className="form-control" placeholder="Gift Card Number" required/>
                 <button className="pwgc-balance-button blueBtn">Check Balance</button>
               </div>
             </div>

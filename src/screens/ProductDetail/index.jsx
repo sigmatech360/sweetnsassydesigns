@@ -78,6 +78,20 @@ const ProductDetail = () => {
     focusOnSelect: true,
   };
 
+
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
+  const sizePriceMap = {
+    "4x4 inch": 5.95,
+    "5x7 inch": 7.95,
+    "6x10 inch": 9.95,
+  };
+  const handleSizeChange = (e) => {
+    const size = e.target.value;
+    setSelectedSize(size);
+    setSelectedPrice(sizePriceMap[size] || "");
+  };
+
   return (
     <DefaultLayout>
       <section className="product-detail-breabcrumb">
@@ -113,18 +127,12 @@ const ProductDetail = () => {
                   <button className="zoom-icon-btn"
                     onClick={() =>
                       Fancybox.show(
-                        images.map((img) => ({
-                          src: img,
-                          type: "image",
-                          caption: product.name,
-                        })),
-                        {
-                          startIndex: images.indexOf(mainImage || images[0]),
-                        }
+                        images.map((img) => ({ src: img, type: "image", caption: product.name,})),
+                        {startIndex: images.indexOf(mainImage || images[0]),}
                       )
                     }
                   >
-                    <IoSearch size={22} />
+                  <IoSearch size={22} />
                   </button>
                 </div>
                 <div className="thumbnail-slider mt-3">
@@ -154,12 +162,13 @@ const ProductDetail = () => {
 
                 <div className="product-size">
                   <label htmlFor="optionSelect">Hoop Sizes & Cut Files</label>
-                  <select id="optionSelect">
-                    <option>Choose an option</option>
-                    <option>4x4 inch</option>
-                    <option>5x7 inch</option>
-                    <option>6x10 inch</option>
+                  <select id="optionSelect" value={selectedSize} onChange={handleSizeChange}>
+                     <option value="">Choose an option</option>
+                     <option value="4x4 inch">4x4 inch</option>
+                     <option value="5x7 inch">5x7 inch</option>
+                     <option value="6x10 inch">6x10 inch</option>
                   </select>
+                   {selectedPrice && <h6>${selectedPrice.toFixed(2)}</h6>}
                 </div>
                 <div className="product-counter">
                   <button className="" onClick={handleDecrease}> - </button>
@@ -167,7 +176,7 @@ const ProductDetail = () => {
                   <button className="" onClick={handleIncrease}> + </button>
                 </div>
                 <div className="cart-wishlist-btn">
-                  <button className="cartbtn" onClick={handleAddToCart}> Add to Cart </button>
+                  <button className={`cartbtn ${!selectedSize ? "disabled" : ""}`} onClick={handleAddToCart} disabled={!selectedSize}> Add to Cart </button>
                   <button className="wishlistbtn" onClick={() => { 
                     if (isInWishlist(product.id)) {navigate("/wishlist"); } else { addToWishlist(product);}}}>
                     {isInWishlist(product.id) ? <FaHeart /> : <FaRegHeart />}{" "}

@@ -16,12 +16,7 @@ const ContactUs = () => {
               <div className="col-lg-4">
                 <div className="address">
                   <span>FB GROUP:</span>{" "}
-                  <a
-                    href="https://www.facebook.com/sweetnsassydesigns18/"
-                    target="_blank"
-                  >
-                    Sweet & Sassy Designs
-                  </a>
+                  <a href="https://www.facebook.com/sweetnsassydesigns18/" target="_blank">Sweet & Sassy Designs</a>
                 </div>
               </div>
               <div className="col-lg-4">
@@ -33,9 +28,7 @@ const ContactUs = () => {
               <div className="col-lg-4">
                 <div className="address">
                   <span>EMAIL:</span>{" "}
-                  <a href="mailto:sweetnsassyblanks@gmail.com">
-                    sweetnsassyblanks@gmail.com
-                  </a>
+                  <a href="mailto:sweetnsassyblanks@gmail.com">sweetnsassyblanks@gmail.com</a>
                 </div>
               </div>
             </div>
@@ -48,56 +41,26 @@ const ContactUs = () => {
               <div className="col-md-12">
                 <div className="secHead">
                   <h2 className="secTitle colorBlue">Get in touch with us</h2>
-                  <p className="secDescription">
-                    Please allow up to 72 hours for us to reply.
-                  </p>
+                  <p className="secDescription">Please allow up to 72 hours for us to reply.</p>
                 </div>
               </div>
               <div className="col-md-7">
                 <form className="webForm">
                   <div className="webFormDiv">
-                    <label htmlFor="inputName" className="form-label">
-                      Your Name (required)
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="inputName"
-                      required
-                    />
+                    <label htmlFor="inputName" className="form-label">Your Name (required)</label>
+                    <input type="text" className="form-control" id="inputName" required />
                   </div>
                   <div className="webFormDiv">
-                    <label htmlFor="inputEmail" className="form-label">
-                      Your Email (required)
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="inputEmail"
-                      required
-                    />
+                    <label htmlFor="inputEmail" className="form-label"> Your Email (required)</label>
+                    <input type="email" className="form-control" id="inputEmail" required/>
                   </div>
                   <div className="webFormDiv">
-                    <label htmlFor="inputSubject" className="form-label">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="inputSubject"
-                      required
-                    />
+                    <label htmlFor="inputSubject" className="form-label">Subject</label>
+                    <input type="text" className="form-control"  id="inputSubject"  required />
                   </div>
                   <div className="webFormDiv">
-                    <label htmlFor="inputMessage" className="form-label">
-                      Subject
-                    </label>
-                    <textarea
-                      className="form-control"
-                      placeholder=""
-                      id="inputMessage"
-                      rows={8}
-                    ></textarea>
+                    <label htmlFor="inputMessage" className="form-label"> Subject</label>
+                    <textarea className="form-control" placeholder="" id="inputMessage" rows={8}></textarea>
                   </div>
                   <button className="themeBtn">Send</button>
                 </form>

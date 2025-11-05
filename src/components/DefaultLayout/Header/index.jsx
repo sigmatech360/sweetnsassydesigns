@@ -141,55 +141,56 @@ const Header = () => {
                     </Link>
 
                     {/* ======= Cart Dropdown ======= */}
-                    <ul className="cart-dropdown-menu">
+                   <ul className="cart-dropdown-menu">
                       {cartCount > 0 ? (
                         <>
-                          {cartItems.map((item) => (
-                            <li key={item.id} className="cart-item">
-                              <div className="cart-item-image">
-                                <img
-                                  src={item.productImages.front}
-                                  alt={item.name}
-                                />
-                              </div>
-                              <div className="cart-item-info">
-                                <p className="cart-item-name">{item.name}</p>
-                                <p className="cart-item-price">
-                                  {item.quantity} × $
-                                  {parseFloat(item.price).toFixed(2)}
-                                </p>
-                              </div>
-                              <button
-                                className="remove-cart-item"
-                                onClick={() => removeFromCart(item.id)}
-                              >
-                                ×
-                              </button>
-                            </li>
-                          ))}
+                          {/* Scrollable items wrapper */}
+                          <div className="cart-items-scroll">
+                            {cartItems.map((item) => (
+                              <li key={item.id} className="cart-item">
+                                <div className="cart-item-image">
+                                  <img src={item.productImages.front} alt={item.name} />
+                                </div>
+                                <div className="cart-item-info">
+                                  <p className="cart-item-name">{item.name}</p>
+                                  <p className="cart-item-price">
+                                    {item.quantity} × ${parseFloat(item.price).toFixed(2)}
+                                  </p>
+                                </div>
+                                <button
+                                  className="remove-cart-item"
+                                  onClick={() => removeFromCart(item.id)}
+                                >
+                                  ×
+                                </button>
+                              </li>
+                            ))}
+                          </div>
 
-                          <li className="cart-subtotal">
-                            <span>Subtotal:</span>
-                            <strong>
-                              $
-                              {cartItems
-                                .reduce(
-                                  (total, item) =>
-                                    total +
-                                    item.quantity * parseFloat(item.price),
-                                  0
-                                )
-                                .toFixed(2)}
-                            </strong>
-                          </li>
-                          <li className="cart-buttons">
-                            <Link to="/cart" className="view-cart-btn">
-                              View Cart
-                            </Link>
-                            <Link to="/checkout" className="checkout-btn">
-                              Checkout
-                            </Link>
-                          </li>
+                          {/* Cart footer */}
+                          <div className="cart-footer">
+                            <div className="cart-subtotal">
+                              <span>Subtotal:</span>
+                              <strong>
+                                $
+                                {cartItems
+                                  .reduce(
+                                    (total, item) => total + item.quantity * parseFloat(item.price),
+                                    0
+                                  )
+                                  .toFixed(2)}
+                              </strong>
+                            </div>
+
+                            <div className="cart-buttons">
+                              <Link to="/cart" className="view-cart-btn">
+                                View Cart
+                              </Link>
+                              <Link to="/checkout" className="checkout-btn">
+                                Checkout
+                              </Link>
+                            </div>
+                          </div>
                         </>
                       ) : (
                         <li className="header-nocaritems">
@@ -197,6 +198,7 @@ const Header = () => {
                         </li>
                       )}
                     </ul>
+
                   </li>
                 </ul>
               </div>

@@ -13,6 +13,8 @@ import Balance from "../screens/Balance";
 import MyAccount from "../screens/MyAccount/MyAccount";
 import ProductDetail from "../screens/ProductDetail";
 import ProtectedRoute from "./ProtectedRoute";
+import LostPassword from "../screens/LostPassword";
+import ChangePassword from "../screens/ChangePassword";
 
 const AppRouter = () => {
   return (
@@ -26,15 +28,10 @@ const AppRouter = () => {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/balance" element={<Balance />} />
-      <Route
-        path="/my-account"
-        element={
-          <ProtectedRoute>
-            <MyAccount />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/my-account" element={<ProtectedRoute><MyAccount /></ProtectedRoute>}/>
       <Route path="/product/:productId" element={<ProductDetail />} />
+      <Route path="/lost-password" element={<LostPassword />} />
+      <Route path="/change-password" element={<ChangePassword />} />
     </Routes>
   );
 };

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 import { Link } from "react-router-dom";
 
@@ -11,9 +10,7 @@ import { useCart } from "../../context/CartContext";
 const Cart = () => {
   const { cartItems, removeFromCart, addToCart } = useCart();
 
-  const totalAmount = cartItems
-    .reduce((sum, item) => sum + item.price * item.quantity, 0)
-    .toFixed(2);
+  const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
 
   return (
     <DefaultLayout>
@@ -71,8 +68,7 @@ const Cart = () => {
                             {/* <div className="couponsInputDiv">
                                 <input type="text"  />
                               </div> */}
-                            <FloatingLabel controlId="floatingInput" label="Enter code" // className=""
->
+                            <FloatingLabel controlId="floatingInput" label="Enter code" >
                               <Form.Control type="text" placeholder="" />
                               <button className="coupanBtn">Apply</button>
                             </FloatingLabel>
@@ -87,7 +83,7 @@ const Cart = () => {
                     <div className="paymentOptions">
                       <div className="paymentOptionsOr">OR</div>
                     </div>
-                    <Link className="proceedToCheckout" to={""}>Proceed to Checkout</Link>
+                    <Link className="proceedToCheckout" to={"/checkout"}>Proceed to Checkout</Link>
                   </div>
                 </div>
               </div>

@@ -2,8 +2,17 @@ import React from "react";
 import DefaultLayout from "../../components/DefaultLayout";
 import { newDesignProducts, shopOurProducts } from "../../data";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const Home = () => {
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (item) => {
+    addToCart(item); 
+  };
+
+
   return (
     <DefaultLayout>
         <section className="newDesignSec">
@@ -17,7 +26,7 @@ const Home = () => {
               {newDesignProducts.map((item, index) => (
                 <div className="col-lg-3 col-md-6 mb-4" key={index}>
                   <div className="productCard">
-                    <div className="productCardImg">
+                    <Link className="productcard-link" to={`/product/${item.id}`} ><div className="productCardImg">
                       <img
                         src={item.productImages.front}
                         alt={item.name}
@@ -28,11 +37,11 @@ const Home = () => {
                         alt={item.name}
                         className="img2 img-fluid"
                       />
-                    </div>
+                    </div> </Link>
                     <div className="productCardContent">
                       <h4 className="productCardName">{item.name}</h4>
                       <p className="productCardPrice">${item.price}</p>
-                      <button className="themeBtn">Add To Cart</button>
+                      <button className="themeBtn" onClick={() => handleAddToCart(item)}>Add To Cart</button>
                     </div>
                   </div>
                 </div>
@@ -69,7 +78,7 @@ const Home = () => {
                         {item.name} {item.count && <span>({item.count})</span>}
                       </h4>
                       <p className="productCardPrice">${item.price}</p>
-                      <button className="themeBtn">Add To Cart</button>
+                      <button className="themeBtn"  onClick={() => handleAddToCart(item)}>Add To Cart</button>
                     </div>
                   </div>
                 </div>

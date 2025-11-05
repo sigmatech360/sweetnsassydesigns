@@ -46,7 +46,7 @@ const MyAccount = () => {
             </div>
             <div className="col-lg-8">  
               <div className="page-content">
-                {selectedMenu === "dashboard" && <DashboardContent />}
+                {selectedMenu === "dashboard" && <DashboardContent handleMenuClick={handleMenuClick} />}
                 {selectedMenu === "orders" && <OrdersContent />}
                 {selectedMenu === "downloads" && <DownloadsContent />}
                 {selectedMenu === "addresses" && <AddressesContent />}

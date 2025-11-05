@@ -314,6 +314,8 @@ button.mobile-search-btn {
   flex-direction: column;
   gap: 0px !important;
   height: fit-content !important;
+  overflow: hidden;
+  transform-origin: top right;
 }
 
 .cart-dropdown:hover .cart-dropdown-menu {
@@ -322,6 +324,13 @@ button.mobile-search-btn {
   transform: translateY(0);
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+
+.cart-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 450px; 
 }
 
 .cart-dropdown-menu .cart-item .cart-item-image img {
@@ -371,6 +380,33 @@ button.mobile-search-btn {
   cursor: pointer;
 }
 
+.cart-footer {
+    width: 100%;
+}
+
+
+.cart-items-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 360px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+
+.cart-items-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.cart-items-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+.cart-items-scroll::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+
 .cart-subtotal {
   display: flex;
   justify-content: space-between;
@@ -396,6 +432,7 @@ button.mobile-search-btn {
   border-radius: 4px;
   text-decoration: none;
   font-size: 14px;
+  width: 100%;
 }
 
 .checkout-btn {

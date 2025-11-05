@@ -253,11 +253,12 @@ a {
   opacity: 0.25;
   color: #333333;
   position: relative;
+  border: none;
 }
 
 .authForms .nav-tabs .nav-link.active {
   background-color: transparent;
-  border: unset;
+  border: none;
   color: #0769bf;
   opacity: 1;
 }
@@ -307,6 +308,13 @@ a {
 
 .authFormDiv {
   margin-bottom: 16px;
+  position: relative;
+}
+
+.authFormDiv .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 33px;
 }
 
 .authForm p {
@@ -510,11 +518,16 @@ a {
   border: unset;
   color: #333;
 }
+
+.productcard-link {
+    text-decoration: none;
+}
+
+
+
 /* Cart Items Style */
 
 /* Order Summery */
-.couponsInputDiv {
-}
 
 .couponsInputDiv .form-floating {
   display: flex;
@@ -1180,12 +1193,21 @@ a {
   font-weight: 700;
 }
 
+.points-ranking {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .point-box-redeem {
   padding: 20px 10px;
   background: #fff;
   text-align: center;
   border-radius: 10px;
+  min-width: 250px;
+  height: 190px;
 }
+
 
 .point-box-redeem h5 {
   text-transform: uppercase;
@@ -1197,6 +1219,13 @@ a {
 .point-box-redeem h3 {
   font-size: 30px;
   font-weight: 400;
+  margin: 0px;
+}
+
+.point-box-redeem h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px 0px 15px 0px;
 }
 
 .point-box-redeem h4 {
@@ -1204,6 +1233,58 @@ a {
   font-size: 14px;
   font-weight: normal;
   margin: 0px;
+}
+
+.convert-points-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.convert-points-box p {
+    margin: 0px !important;
+}
+
+.convert-points-box input {
+    padding: 5px 0px 5px 15px;
+    background: rgba(0, 0, 0, .04);
+    border: none;
+    border-radius: 3px;
+    color: #555;
+    font-weight: 600;
+}
+ 
+.my-coupons-table table.table.table-bordered.align-middle {
+    border-color: #ececec;
+}
+
+.my-coupons-table table.table.table-bordered.align-middle thead.table-light {
+    border-color: #ececec;
+}
+
+.my-coupons-table table tbody tr td:nth-child(3) {
+    color: #999;
+}
+
+.convert-points-box h6 {
+    margin: 0px;
+}
+
+.convert-points-box button {
+    background: #5B5B5B;
+    border: 1px solid #5B5B5B;
+    color: #fff;
+    padding: 10px 20px;
+    transition: all .6s ease;
+}
+
+.convert-points-box button:focus {
+    outline: none;
+}
+
+.convert-points-box button:hover {
+    background: transparent;
+    color: #5B5B5B;
 }
 
 .manage-points-tabs .react-tabs .react-tabs__tab-list {
@@ -1219,8 +1300,7 @@ a {
   list-style: none;
   cursor: pointer;
   padding: 10px 20px;
-  font-weight: bold;
-  color: #333;
+  color: #939393;
 }
 
 .manage-points-tabs .react-tabs .react-tabs__tab-list li:focus {
@@ -1232,6 +1312,8 @@ a {
   .react-tabs__tab-list
   li.react-tabs__tab--selected {
   border-bottom: 2px outset #333 !important;
+  color: #333;
+  font-weight: bold;
 }
 
 .point-tabs-content {
@@ -1309,6 +1391,141 @@ a {
 .products-download-table table tbody tr td {
   font-weight: 400;
   font-size: 14px;
+}
+
+
+.points-history-tab table.table.table-bordered.align-middle {
+    border-color: #ececec;
+}
+
+.points-history-tab table.table.table-bordered.align-middle thead.table-light {
+    border-color: #ececec;
+}
+
+
+.creditcard-payment-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 0px 15px 0px;
+}
+
+.creditcard-payment-flex h6 {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+}
+
+
+
+.creditcard-payment-flex h6 {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #333333;
+}
+
+.creditcard-payment-box {
+    background-color: #dcd7e2;
+    padding: 1em;
+    position: relative;
+}
+
+.creditcard-payment-box::before {
+    position: absolute;
+    content: "";
+    background: #dcd7e2;
+    height: 20px;
+    width: 20px;
+    top: -10px;
+    transform: rotate(45deg);
+    left: 50px;
+}
+
+.card-number-box input {
+    display: block;
+    width: 100%;
+}
+
+.card-number-box label {
+    margin: 0px 0px 10px 0px;
+}
+
+
+.expiry-security input {
+    display: block;
+    width: 100%;
+}
+
+.paymentbox-expiry-security {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.expiry-security label {
+    margin: 0px 0px 10px 0px;
+}
+
+.payment-country-box select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.payment-country-box label {
+    margin: 0px 0px 10px 0px;
+}
+
+.payment-country-box {
+    margin: 20px 0px 0px 0px;
+}
+
+.payment-country-box p {
+    color: #6d6e78;
+    margin: 15px 0px 5px 0px;
+    font-size: 14px;
+}
+
+.payment-credit-button {
+    margin: 30px 0px 0px 0px;
+    padding: 30px 0px 0px 0px;
+    border-top: 1px solid rgba(104,87,125,.14);
+    text-align: end;
+}
+
+
+.payment-credit-button button {
+    background-color: #7f54b3;
+    color: #fff;
+    padding: 10px 22px;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all .6s ease;
+}
+
+.payment-credit-button button:focus {
+    outline: none;
+}
+
+.payment-credit-button button:hover {
+  background-color: #0769bf;
+}
+
+.card-element-box {
+    background: #fff;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.creditcard-payment-box label {
+    margin: 0px 0px 10px 0px;
 }
 
 /********** My Account css End **********/
@@ -1413,11 +1630,29 @@ a {
 .cart-wishlist-btn .cartbtn {
   font-size: 16px;
   padding: 15px 45px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   border: none;
   width: fit-content;
   color: #fff;
   background: #0769bf;
+  cursor: pointer;
+}
+
+.cartbtn:disabled,
+.cartbtn.disabled {
+  opacity: 0.5;               
+  cursor: not-allowed;          
+}
+
+.cart-wishlist-btn .cartbtn:not(:disabled):hover {
+  opacity: 0.9;            
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.cartbtn:not(:disabled):active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .cart-wishlist-btn .wishlistbtn {
@@ -1645,7 +1880,99 @@ table.additional-information-table tbody tr td {
   height: 96px;
 }
 
+.product-size h6 {
+    margin: 30px 0px 0px 10px;
+    font-size: 20px;
+    color: #0769bf;
+    font-weight: 600;
+}
+
 /********** Product Detail Page css End **********/
+
+
+
+/********** Lost Password Page css Start **********/
+
+
+.lost-input-field input {
+    display: block;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+
+.lost-input-field input:focus {
+    outline: none;
+}
+
+
+.lost-password-form p {
+    margin: 0px 0px 30px 0px;
+}
+
+.lost-input-field button {
+    padding: 14px 22px;
+    background-color: #0769bf;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid #0769bf;
+    transition: all .6s ease;
+}
+
+.lost-input-field button:hover {
+    background: transparent;
+    color: #0769bf;
+}
+
+
+.lost-input-field {
+    margin: 0px 0px 30px 0px;
+    position: relative;
+}
+
+.change-password-form button {
+    padding: 14px 22px;
+    background-color: #0769bf;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid #0769bf;
+    transition: all .6s ease;
+}
+
+.change-password-form p {
+    background: #0769bf;
+    margin: 0px;
+    padding: 15px;
+    color: #fff;
+    margin: 0px 0px 20px 0px;
+}
+
+
+.lost-input-field .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+}
+
+.lost-password-form h6 {
+  background: #0769bf;
+  padding: 15px;
+  color: #fff;
+  margin: 0px 0px 20px 0px;
+  font-weight: normal;
+}
+
+.otp-box:focus {
+    outline: none;
+}
+
+/********** Lost Password Page css End **********/
+
+
 
 /********** Responsive CSS Start **********/
 
