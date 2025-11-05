@@ -5,6 +5,10 @@ import { sidebarData } from "../data/Data";
 import Login from "../Pages/Login";
 import ForgotPassword from "../Pages/ForgotPassword";
 import ProtectedRoute from "./ProtectedRoute";
+import CategoryTable from "../Pages/Categories/CategoryTable";
+import AddCategory from "../Pages/Categories/AddCategory";
+import SubcategoryTable from "../Pages/Categories/SubcategoryTable";
+import EditCategory from "../Pages/Categories/EditCategory";
 
 const AppRoutes = () => {
   return (
@@ -15,7 +19,7 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Routes>
-              {sidebarData.map((section) =>
+              {/* {sidebarData.map((section) =>
                 section.items.map((item) => {
                   const Component = item.component;
                   if (!Component) return null;
@@ -28,8 +32,13 @@ const AppRoutes = () => {
                     />
                   );
                 })
-              )}
+              )} */}
+              
 
+              <Route path="/categories/list" element={<CategoryTable />} />
+              <Route path="/categories/add" element={<AddCategory />} />
+              <Route path="/categories/edit/:id" element={<EditCategory />} />
+              <Route path="/categories/subcategory/list/:id" element={<SubcategoryTable />} />
               {/* Public routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />

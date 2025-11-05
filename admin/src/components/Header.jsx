@@ -60,8 +60,7 @@ const Header = ({ toggleSidebar }) => {
           <Col lg={8} md={5} sm={5} xs={5}>
             <div className="header-toggle-search">
               <button onClick={toggleSidebar}>☰</button>
-              <div className="header-search">
-                {/* Mobile search overlay */}
+              {/* <div className="header-search">
                 {isMobile && showSearch && (
                   <div
                     className={`mobile-search-overlay ${
@@ -88,7 +87,6 @@ const Header = ({ toggleSidebar }) => {
                   </div>
                 )}
 
-                {/* Desktop Search */}
                 {!isMobile && (
                   <>
                     <input
@@ -104,13 +102,12 @@ const Header = ({ toggleSidebar }) => {
                   </>
                 )}
 
-                {/* Mobile Search Icon */}
                 {isMobile && !mobileSearchOpen && (
                   <span onClick={() => setMobileSearchOpen(true)}>
                     <BiSearch />
                   </span>
                 )}
-              </div>
+              </div> */}
             </div>
           </Col>
 

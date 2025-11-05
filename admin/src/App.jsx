@@ -27,7 +27,7 @@ const App = () => {
       {isAuthPage ? (
         <AppRoutes />
       ) : (
-        <div className="dashboard">
+        <div className="dashboard dark-theme">
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
           {isSidebarOpen && window.innerWidth < 992 && (
             <div className="sidebar-backdrop" onClick={toggleSidebar}></div>

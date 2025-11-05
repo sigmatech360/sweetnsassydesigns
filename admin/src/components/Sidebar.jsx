@@ -2,10 +2,11 @@ import React from "react";
 import { sidebarData } from "../data/Data";
 import { Link } from "react-router-dom";
 import { FiX } from "react-icons/fi";
-import logo from "../assets/headerLogo.webp"
+import logo from "../assets/headerLogo.png"
 
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const pathname = window.location.pathname;
   return (
     <div className={`sidebar ${isOpen ? "" : "closed"}`}>
       <div className="sidebar-header">
@@ -22,7 +23,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 const Icon = item.icon;
                 return (
                   <li key={item.id} className="sidebar-item">
-                    <Link to={item.path} className="sidebar-link">
+                    <Link to={item.path} className={`sidebar-link ${pathname === item.path ? "active" : ""}`}>
                       <span className="sidebar-icon"><Icon /></span>
                       <span className="sidebar-text">{item.title}</span>
                     </Link>
