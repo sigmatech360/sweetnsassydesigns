@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser, logoutUser } from "../api/auth";
 import { toast } from "react-toastify";
+import { sidebarData } from "../data/Data";
 
 const AuthContext = createContext();
 
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(data?.data));
         setUser(data?.data);
         toast.success("Login successful!");
-        navigate("/", { replace: true });
+        navigate(sidebarData[0].path, { replace: true });
       } else {
         toast.error(data?.message || "Invalid credentials");
       }

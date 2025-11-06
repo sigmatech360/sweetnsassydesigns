@@ -52,6 +52,7 @@ a {
 
   /* Layout */
   --sidebar-width: 290px;
+  --sidebar-height: calc(100vh - 90px);
   --navbar-height: 90px;
   --border-radius: 5px;
   --transition-speed: 0.3s;
@@ -171,24 +172,18 @@ a {
   background-color: var(--color-card-light);
   border-right: 1px solid var(--color-border-light);
   /* padding: 20px; */
-  height: 100vh;
+  height: var(--sidebar-height);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #999 transparent;
   position: fixed;
-  top: 0;
+  top: 90px;
   left: 0;
   z-index: var(--z-index-navbar);
   transition: transform var(--transition-speed) ease;
 }
 
-.sidebar.open {
-  transform: translateX(0);
-}
 
-.sidebar.closed {
-  /* transform: translateX(-100%); */
-}
 
 .dark-theme .sidebar {
   background-color: var(--color-card-dark);
@@ -197,7 +192,16 @@ a {
 }
 
 .sidebar.closed {
-  transform: translateX(-100%);
+  /* transform: translateX(-100%); */
+  width: 70px;
+}
+
+.sidebar.closed .sidebar-link {
+  justify-content: center;
+}
+
+.sidebar.closed .sidebar-link .sidebar-text {
+  display: none;
 }
 
 .sidebar-section ul.sidebar-menu {
@@ -297,7 +301,7 @@ form.authForm input:focus {
 .navbar-header {
   height: var(--navbar-height, 70px);
   background-color: var(--color-card-light, #fff);
-  padding: 0 20px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -305,8 +309,10 @@ form.authForm input:focus {
   margin: 0px 0px 20px 0px;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -314,6 +320,13 @@ form.authForm input:focus {
   background-color: var(--color-card-dark);
   box-shadow: var(--box-shadow-dark);
 } */
+
+.header-brand{
+  width: 200px;
+}
+.header-brand img{
+  width: 100%;
+}
 
 .header-toggle-search {
   display: flex;
@@ -386,6 +399,7 @@ form.authForm input:focus {
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
+  margin: 0;
 }
 
 /* .dark-theme .header-end ul li {
@@ -481,6 +495,16 @@ form.authForm input:focus {
   color: var(--color-primary);
 }
 
+.page-link{
+  cursor: pointer;
+}
+
+.page-link:hover{
+  background-color: var(--bs-pagination-active-bg) !important;
+  color: #fff !important;
+}
+
+.page-link:active,
 .page-link:focus {
   box-shadow: none !important;
 }
@@ -525,7 +549,7 @@ form.authForm input:focus {
 /* Main Content */
 .main-content {
   flex: 1;
-  /* padding: 0 20px; */
+  padding-top: 90px;
   background-color: transparent;
   transition: margin-left var(--transition-speed);
 }
@@ -535,7 +559,7 @@ form.authForm input:focus {
 }
 
 .main-content.closed {
-  margin-left: 0;
+  margin-left: 70px;
 }
 
 .authFormDiv {
@@ -766,6 +790,7 @@ tr {
   margin: 0px 0px 10px 0px;
 }
 
+.category-input-field select,
 .category-input-field input {
   width: 100%;
   display: block;

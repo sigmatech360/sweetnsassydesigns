@@ -1,11 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { BiSearch, BiBell, BiChevronDown, BiUser, BiLogOut, } from "react-icons/bi";
+import {
+  BiSearch,
+  BiBell,
+  BiChevronDown,
+  BiUser,
+  BiLogOut,
+} from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; 
+import { useAuth } from "../context/AuthContext";
+import logo from "../assets/headerLogo.png";
+import { FiX } from "react-icons/fi";
 
 const Header = ({ toggleSidebar }) => {
-  const { user, logout, isLoggingIn } = useAuth(); 
+  const { user, logout, isLoggingIn } = useAuth();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -22,7 +30,7 @@ const Header = ({ toggleSidebar }) => {
 
   // Logout handler
   const handleLogout = () => {
-    logout(); 
+    logout();
   };
 
   // Handle resize
@@ -108,38 +116,63 @@ const Header = ({ toggleSidebar }) => {
                   </span>
                 )}
               </div> */}
+              <div className="header-brand">
+                  <img src={logo} alt="logo" />
+                {/* <Link to="/">
+                </Link> */}
+                {/* <button className="sidebar-close-btn" onClick={toggleSidebar}>
+                  <FiX size={22} />
+                </button> */}
+              </div>
             </div>
           </Col>
 
           <Col lg={4} md={7} sm={7} xs={7}>
             <div className="header-end">
               <ul>
-                <li>
+                {/* <li>
                   <BiBell size={22} />
-                </li>
+                </li> */}
 
                 {/* ✅ Authenticated user dropdown */}
                 {user ? (
                   <li className="profile-wrapper" ref={dropdownRef}>
-                    <div className="header-profile" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                    <div
+                      className="header-profile"
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                    >
                       <img
-                        src={user?.avatar || "https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg"}
-                        alt="profile" className="profile-img"/>
-                      <span className="profile-name">{user?.name || user?.username || "User"}</span>
+                        src={
+                          user?.avatar ||
+                          "https://sm.ign.com/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.jpg"
+                        }
+                        alt="profile"
+                        className="profile-img"
+                      />
+                      <span className="profile-name">
+                        {user?.name || user?.username || "User"}
+                      </span>
                       <BiChevronDown size={18} />
                     </div>
 
                     {dropdownOpen && (
                       <div className="profile-dropdown">
                         {/* <Link to="/profile" className="dropdown-item"><BiUser /> Profile Settings</Link> */}
-                        <button className="dropdown-item" onClick={handleLogout} disabled={isLoggingIn}>
-                        <BiLogOut /> Logout</button>
+                        <button
+                          className="dropdown-item"
+                          onClick={handleLogout}
+                          disabled={isLoggingIn}
+                        >
+                          <BiLogOut /> Logout
+                        </button>
                       </div>
                     )}
                   </li>
                 ) : (
                   <li>
-                    <Link to="/login" className="themebtn">Login</Link>
+                    <Link to="/login" className="themebtn">
+                      Login
+                    </Link>
                   </li>
                 )}
               </ul>

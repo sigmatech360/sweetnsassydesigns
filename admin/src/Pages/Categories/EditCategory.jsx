@@ -2,10 +2,10 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { editCategory, updateCategory } from "../../api/category";
+import { editCategory, getAllCategories, updateCategory } from "../../api/category";
 import BackButton from "../../components/Shared/BackButton";
 import { FaCamera } from "react-icons/fa6";
-import sampleImage from "../../assets/sampleImage.webp"
+import sampleImage from "../../assets/sampleImage.webp";
 
 const EditCategory = () => {
   const { id } = useParams();
@@ -16,6 +16,10 @@ const EditCategory = () => {
     parent_category: "",
     thumbnail: null,
   });
+  const { data: categoriesList = [] } = useQuery({
+      queryKey: ["categories"],
+      queryFn: getAllCategories,
+    });
   const [preview, setPreview] = useState(sampleImage);
   const { data: categoryData = [], isLoading } = useQuery({
     queryKey: [],
@@ -23,11 +27,8 @@ const EditCategory = () => {
   });
 
   useEffect(() => {
-    console.log("categoryData", categoryData);
-
     if (categoryData.success) {
       let category = categoryData?.data;
-      console.log("category", category);
 
       setFormData({
         title: category.title || "",
@@ -49,7 +50,6 @@ const EditCategory = () => {
       const file = files[0];
       setFormData({ ...formData, thumbnail: file });
       setPreview(URL.createObjectURL(file));
-      
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -95,7 +95,7 @@ const EditCategory = () => {
     if (!formData.title) return toast.warning("Please enter a category title");
     // onSubmit(formData);
     // setIsLoading(true);
-    updateMutation.mutate({id,formData});
+    updateMutation.mutate({ id, formData });
   };
 
   return (
@@ -134,13 +134,26 @@ const EditCategory = () => {
                 <div className="col-md-6">
                   <div className="category-input-field">
                     <label>Parent Category (optional)</label>
-                    <input
+                    <select
+                      name="parent_category"
+                      id="parent_category"
+                      value={formData.parent_category}
+                      onChange={handleChange}
+                    >
+                      <option value="">None</option>
+                      {categoriesList.data &&
+                        categoriesList.data.length > 0 &&
+                        categoriesList.data.map((category) => (
+                          <option value={category.id}>{category.title}</option>
+                        ))}
+                    </select>
+                    {/* <input
                       type="text"
                       name="parent_category"
                       placeholder="Enter parent category ID"
                       value={formData.parent_category}
                       onChange={handleChange}
-                    />
+                    /> */}
                   </div>
                 </div>
 
@@ -155,7 +168,7 @@ const EditCategory = () => {
                       accept="image/*"
                       onChange={handleChange}
                       className="d-none"
-                    //   hidden
+                      //   hidden
                     />
                     <div className="category-image-preview ">
                       <img
@@ -166,7 +179,7 @@ const EditCategory = () => {
                       <label htmlFor="thumbnail" className="btn btn-secondary">
                         {/* <button type="button" className="btn btn-secondary">
                         </button> */}
-                          <FaCamera /> Update{" "}
+                        <FaCamera /> Update{" "}
                       </label>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -12,10 +12,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      alert("Please enter both email and password");
-      return;
-    }
+    // if (!email || !password) {
+    //   alert("Please enter both email and password");
+    //   return;
+    // }
 
     login({ email, password }); // ✅ Uses same login API
   };

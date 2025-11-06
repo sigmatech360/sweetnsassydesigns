@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { forgotPassword, verifyOtp, resetPassword } from "../api/auth";
+import { forgotPassword, verifyOtp, resetPassword } from "../../api/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const ForgotPassword = () => {

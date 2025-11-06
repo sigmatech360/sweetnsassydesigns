@@ -10,7 +10,7 @@ import TablePagination from "./TablePagination";
 const Table = ({ data, columns }) => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 8,
+    pageSize: 12,
   });
   const table = useReactTable({
     data: data || [],

@@ -2,13 +2,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { sidebarData } from "../data/Data";
-import Login from "../Pages/Login";
-import ForgotPassword from "../Pages/ForgotPassword";
+import Login from "../Pages/Auth/Login";
+import ForgotPassword from "../Pages/Auth/ForgotPassword";
 import ProtectedRoute from "./ProtectedRoute";
 import CategoryTable from "../Pages/Categories/CategoryTable";
 import AddCategory from "../Pages/Categories/AddCategory";
 import SubcategoryTable from "../Pages/Categories/SubcategoryTable";
 import EditCategory from "../Pages/Categories/EditCategory";
+import Dashboard from "../Pages/Dashboard";
+import AttributeTable from "../Pages/Attributes/AttributeTable";
+import EditAttribute from "../Pages/Attributes/EditAttributes";
+import AddAttribute from "../Pages/Attributes/AddAttribute";
+import ProductTable from "../Pages/Products/ProductTable";
 
 const AppRoutes = () => {
   return (
@@ -19,32 +24,28 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Routes>
-              {/* {sidebarData.map((section) =>
-                section.items.map((item) => {
-                  const Component = item.component;
-                  if (!Component) return null;
-
-                  return (
-                    <Route
-                      key={item.id}
-                      path={item.path}
-                      element={<Component title={item.title} />}
-                    />
-                  );
-                })
-              )} */}
-              
-
+              {/* Default */}
+              {/* <Route path="/" element={<Dashboard/>} /> */}
+              {/* Categories */}
               <Route path="/categories/list" element={<CategoryTable />} />
               <Route path="/categories/add" element={<AddCategory />} />
               <Route path="/categories/edit/:id" element={<EditCategory />} />
-              <Route path="/categories/subcategory/list/:id" element={<SubcategoryTable />} />
+              <Route
+                path="/categories/subcategory/list/:id"
+                element={<SubcategoryTable />}
+              />
+              {/* Attribute */}
+              <Route path="/attributes/list" element={<AttributeTable />} />
+              <Route path="/attribute/add" element={<AddAttribute />} />
+              <Route path="/attribute/edit/:id" element={<EditAttribute />} />
+
+              {/* ProductS */}
+              <Route path="/products/list" element={<ProductTable />} />
+              <Route path="/product/add" element={<AddAttribute />} />
+              <Route path="/product/edit/:id" element={<EditAttribute />} />
               {/* Public routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-
-              {/* Default */}
-              <Route path="/" element={<div>Dashboard Page</div>} />
               <Route path="*" element={<div>Page Not Found</div>} />
             </Routes>
           </ProtectedRoute>

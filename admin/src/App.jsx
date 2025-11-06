@@ -4,6 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import { useLocation } from "react-router-dom";
+import ScreenLoader from "./components/Shared/ScreenLoader/ScreenLoader";
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -32,14 +33,15 @@ const App = () => {
           {isSidebarOpen && window.innerWidth < 992 && (
             <div className="sidebar-backdrop" onClick={toggleSidebar}></div>
           )}
-          <main className={`main-content ${isSidebarOpen ? "open" : "closed"}`}>
             <Header toggleSidebar={toggleSidebar} />
+          <main className={`main-content ${isSidebarOpen ? "open" : "closed"}`}>
             <div className="page-container">
               <AppRoutes />
             </div>
           </main>
         </div>
       )}
+      {/* <ScreenLoader/> */}
     </>
   );
 };
