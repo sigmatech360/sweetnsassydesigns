@@ -51,7 +51,7 @@ a {
   --color-danger: #ef4444;
 
   /* Layout */
-  --sidebar-width: 290px;
+  --sidebar-width: 190px;
   --sidebar-height: calc(100vh - 90px);
   --navbar-height: 90px;
   --border-radius: 5px;
@@ -183,8 +183,6 @@ a {
   transition: transform var(--transition-speed) ease;
 }
 
-
-
 .dark-theme .sidebar {
   background-color: var(--color-card-dark);
   color: white;
@@ -255,7 +253,7 @@ a {
 .sidebar-icon {
   font-size: 18px;
 }
-.sidebar-header{
+.sidebar-header {
   padding: 10px;
 }
 
@@ -321,10 +319,10 @@ form.authForm input:focus {
   box-shadow: var(--box-shadow-dark);
 } */
 
-.header-brand{
+.header-brand {
   width: 200px;
 }
-.header-brand img{
+.header-brand img {
   width: 100%;
 }
 
@@ -495,11 +493,11 @@ form.authForm input:focus {
   color: var(--color-primary);
 }
 
-.page-link{
+.page-link {
   cursor: pointer;
 }
 
-.page-link:hover{
+.page-link:hover {
   background-color: var(--bs-pagination-active-bg) !important;
   color: #fff !important;
 }
@@ -749,6 +747,14 @@ tr {
   font-family: var(--font-family);
 }
 
+table tbody td {
+    font-size: 14px;
+}
+.list-table table thead tr>th:first-child,
+.list-table table tbody tr>td:first-child {
+  padding: 10px 0px 10px 0px !important;
+}
+
 .list-table table thead tr th {
   font-weight: 600;
 }
@@ -818,14 +824,13 @@ tr {
   object-fit: contain;
   width: 100%;
 }
-.category-image-preview label{
+.category-image-preview label {
   position: absolute;
   bottom: 10px;
   right: 10px;
   display: flex;
   align-items: center;
   gap: 6px;
-
 }
 
 .category-form-btn button {
@@ -1028,4 +1033,20 @@ tr {
     color: var(--color-primary);
     border: 1px solid var(--color-border-dark);
   }
+}
+
+.product .ql-editor {
+  min-height: 300px;
+}
+
+.product .product_header {
+  border: 1px solid lightgray;
+  border-bottom: navajowhite;
+  margin: 0;
+  padding: 10px 15px;
+  width: 100%;
+  font-weight: 500;
+}
+.product .product_header *{
+  margin: 0;
 }

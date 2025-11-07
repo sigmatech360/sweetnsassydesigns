@@ -33,8 +33,8 @@ const ProductTable = () => {
 
   // ✅ Filter categories by search
   const filteredData = useMemo(() => {
-    console.log('productsData', productsData);
-    
+    console.log("productsData", productsData);
+
     const all = productsData?.data || [];
     return all.filter((item) =>
       item?.title?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -44,7 +44,7 @@ const ProductTable = () => {
   // ✅ Columns for table
   const columns = useMemo(
     () => [
-      { accessorKey: "id", header: "S. No.", cell: ({ row }) => row.index + 1 },
+      { accessorKey: "id", header: "", cell: ({ row }) => row.index + 1 },
       {
         accessorKey: "image",
         header: "Image",
@@ -64,23 +64,28 @@ const ProductTable = () => {
             <span className="text-muted">No Image</span>
           ),
       },
-      { accessorKey: "title", header: "Title" },
+      { accessorKey: "title", header: "Title", cell: (info) => <span className="text-primary fw-medium">{info.getValue()}</span> },
       { accessorKey: "sku", header: "SKU" },
+      {
+        accessorKey: "regular_price",
+        header: "Price",
+        cell: (info) => <span>${info.getValue()}</span>,
+      },
       {
         accessorKey: "in_stock",
         header: "Stock",
         cell: (info) => {
-          info.getValue() == "0" ? (
-            <span className="text-danger fw-bold">Out of Stock</span>
+          return info.getValue() == "0" ? (
+            <span className="text-danger fw-medium text-nowrap">Out of Stock</span>
           ) : (
-            <span className="text-success fw-bold">In Stock</span>
+            <span className="text-success fw-medium text-nowrap">In Stock</span>
           );
         },
       },
       {
         accessorKey: "categories",
         header: "Categories",
-        cell: (info) => <span>{info.getValue().map(cat => cat.title).join(", ")}</span>,
+        cell: (info) => <span>{info.getValue()}</span>,
       },
       {
         accessorKey: "date",
@@ -203,7 +208,11 @@ const ProductTable = () => {
                 </span>
               </div>
             </div>
-            <Table data={filteredData} totalItems={productsData?.meta?.total} columns={columns} />
+            <Table
+              data={filteredData}
+              totalItems={productsData?.meta?.total}
+              columns={columns}
+            />
           </div>
         </div>
       </div>

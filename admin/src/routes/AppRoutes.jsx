@@ -14,6 +14,7 @@ import AttributeTable from "../Pages/Attributes/AttributeTable";
 import EditAttribute from "../Pages/Attributes/EditAttributes";
 import AddAttribute from "../Pages/Attributes/AddAttribute";
 import ProductTable from "../Pages/Products/ProductTable";
+import AddProduct from "../Pages/Products/AddProduct";
 
 const AppRoutes = () => {
   return (
@@ -41,7 +42,7 @@ const AppRoutes = () => {
 
               {/* ProductS */}
               <Route path="/products/list" element={<ProductTable />} />
-              <Route path="/product/add" element={<AddAttribute />} />
+              <Route path="/product/add" element={<AddProduct />} />
               <Route path="/product/edit/:id" element={<EditAttribute />} />
               {/* Public routes */}
               <Route path="/login" element={<Login />} />
