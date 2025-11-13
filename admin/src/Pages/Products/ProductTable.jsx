@@ -46,17 +46,17 @@ const ProductTable = () => {
     () => [
       { accessorKey: "id", header: "", cell: ({ row }) => row.index + 1 },
       {
-        accessorKey: "image",
+        accessorKey: "images",
         header: "Image",
         cell: (info) =>
           info.getValue() ? (
             <img
-              src={`${import.meta.env.VITE_API_BASE_URL}${info.getValue()}`}
-              alt="Product Image"
+              src={`${import.meta.env.VITE_API_BASE_URL}${info.getValue()[0]}`}
+              alt="Product"
               style={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "6px",
+                width: "40px",
+                height: "40px",
+                // borderRadius: "6px",
                 objectFit: "cover",
               }}
             />
@@ -64,19 +64,27 @@ const ProductTable = () => {
             <span className="text-muted">No Image</span>
           ),
       },
-      { accessorKey: "title", header: "Title", cell: (info) => <span className="text-primary fw-medium">{info.getValue()}</span> },
+      {
+        accessorKey: "title",
+        header: "Title",
+        cell: (info) => (
+          <span className="text-primary fw-medium">{info.getValue()}</span>
+        ),
+      },
       { accessorKey: "sku", header: "SKU" },
       {
-        accessorKey: "regular_price",
+        accessorKey: "price",
         header: "Price",
-        cell: (info) => <span>${info.getValue()}</span>,
+        cell: (info) => <span dangerouslySetInnerHTML={{ __html: info.getValue() }} />,
       },
       {
         accessorKey: "in_stock",
         header: "Stock",
         cell: (info) => {
           return info.getValue() == "0" ? (
-            <span className="text-danger fw-medium text-nowrap">Out of Stock</span>
+            <span className="text-danger fw-medium text-nowrap">
+              Out of Stock
+            </span>
           ) : (
             <span className="text-success fw-medium text-nowrap">In Stock</span>
           );
@@ -88,9 +96,13 @@ const ProductTable = () => {
         cell: (info) => <span>{info.getValue()}</span>,
       },
       {
-        accessorKey: "date",
-        header: "Date",
-        cell: (info) => <span>Published{info.getValue()}</span>,
+        id: "status",
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => {
+          let {status, updated_at} = row.original;
+          return <span>{status == 1 ? 'Published':'Pending'}</span>;
+        },
       },
       {
         id: "actions",

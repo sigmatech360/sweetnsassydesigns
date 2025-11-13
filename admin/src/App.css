@@ -107,6 +107,24 @@ a {
     color var(--transition-speed) ease;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.accordion-button:focus {
+  /* z-index: 3;
+  outline: 0; */
+  box-shadow: unset;
+  background-color: transparent;
+}
+.accordion-button {
+  background-color: transparent !important;
+  border: unset !important;
+  box-shadow: unset !important;
+  color: #031243;
+  padding: 0.5rem !important;
+}
+
 .dashboard {
   display: flex;
   min-height: 100vh;
@@ -742,16 +760,16 @@ tfoot,
 th,
 thead,
 tr {
-  padding: 10px 30px 10px 20px !important;
+  padding: 10px 20px 10px 20px !important;
   /* border: 1px solid #c6c7c8 !important;  */
-  font-family: var(--font-family);
+  /* font-family: var(--font-family); */
 }
 
 table tbody td {
-    font-size: 14px;
+  font-size: 14px;
 }
-.list-table table thead tr>th:first-child,
-.list-table table tbody tr>td:first-child {
+.list-table table thead tr > th:first-child,
+.list-table table tbody tr > td:first-child {
   padding: 10px 0px 10px 0px !important;
 }
 
@@ -797,7 +815,8 @@ table tbody td {
 }
 
 .category-input-field select,
-.category-input-field input {
+.category-input-field input,
+.category-input-field textarea {
   width: 100%;
   display: block;
   padding: 5px 10px;
@@ -1035,18 +1054,140 @@ table tbody td {
   }
 }
 
+.product_form {
+  font-size: 14px;
+}
+
 .product .ql-editor {
   min-height: 300px;
 }
 
+.product .pruduct_button {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.product_header{
+  background-color: rgb(238, 238, 238);
+}
+
 .product .product_header {
   border: 1px solid lightgray;
-  border-bottom: navajowhite;
   margin: 0;
   padding: 10px 15px;
   width: 100%;
   font-weight: 500;
 }
-.product .product_header *{
+.product .product_header * {
   margin: 0;
+}
+
+.product-tabs {
+  border: 1px solid lightgray;
+}
+
+.product-tabs .nav-tabs {
+  border: none;
+  border-right: 1px solid lightgray;
+  padding-right: 0;
+}
+.product-tabs .nav-tabs .nav-item {
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+}
+.product-tabs .nav-tabs .nav-item .nav-link {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  padding: 12px 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-align: left;
+  /* background-color: transparent; */
+}
+
+.product-tabs .nav-tabs .nav-item .nav-link.active {
+  background-color: lightgrey;
+  color: #000;
+}
+
+.product-tabs .tab-content {
+  padding: 16px 0px;
+}
+
+.product-tabs .attributes {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.product-tabs .attributes .attributes_addexisting {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  width: 200px;
+  position: absolute;
+  left: 96px;
+  top: 0px;
+  background: white;
+  z-index: 100;
+}
+
+.product-tabs .attributes .attributes_addexisting p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: 0;
+}
+.product-tabs .attributes .attributes_addexisting .attribute_item_input {
+  width: 100%;
+  padding: 4px 8px;
+}
+.product-tabs .attributes .attributes_addexisting .attribute_item_input input {
+  width: 100%;
+  padding: 6px 8px;
+}
+
+.product-tabs .attributes .attributes_addexisting .attribute_item {
+  padding: 8px;
+  cursor: pointer;
+}
+.product-tabs .attributes .attributes_addexisting .attribute_item.active,
+.product-tabs .attributes .attributes_addexisting .attribute_item:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.product_gallery_images > div:hover .delete_gallery_image {
+  display: flex;
+}
+
+.product_gallery_images .delete_gallery_image {
+  background-color: darkgray;
+  font-size: 12px;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  line-height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  cursor: pointer;
+  display: none;
+  border: 2px solid #fff;
+}
+
+.product_categories_list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.attribute_accordion .accordion-button {
+  font-size: 14px;
+  /* color: gray !important; */
 }

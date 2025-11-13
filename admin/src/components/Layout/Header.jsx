@@ -8,25 +8,25 @@ import {
   BiLogOut,
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import logo from "../assets/headerLogo.png";
+import { useAuth } from "../../context/AuthContext";
+import logo from "../../assets/headerLogo.png";
 import { FiX } from "react-icons/fi";
 
 const Header = ({ toggleSidebar }) => {
   const { user, logout, isLoggingIn } = useAuth();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  // const [showSearch, setShowSearch] = useState(false);
+  // const [searchQuery, setSearchQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const dropdownRef = useRef(null);
 
   // Search handler
-  const handleSearch = () => {
-    if (searchQuery.trim() === "") return;
-    alert(`Searching for: ${searchQuery}`);
-  };
+  // const handleSearch = () => {
+  //   if (searchQuery.trim() === "") return;
+  //   alert(`Searching for: ${searchQuery}`);
+  // };
 
   // Logout handler
   const handleLogout = () => {
@@ -52,14 +52,14 @@ const Header = ({ toggleSidebar }) => {
   }, []);
 
   // Handle mobile search animation
-  useEffect(() => {
-    if (mobileSearchOpen) {
-      setShowSearch(true);
-    } else {
-      const timer = setTimeout(() => setShowSearch(false), 250);
-      return () => clearTimeout(timer);
-    }
-  }, [mobileSearchOpen]);
+  // useEffect(() => {
+  //   if (mobileSearchOpen) {
+  //     setShowSearch(true);
+  //   } else {
+  //     const timer = setTimeout(() => setShowSearch(false), 250);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [mobileSearchOpen]);
 
   return (
     <header className="navbar-header">

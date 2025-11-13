@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { sidebarData } from "../../data/Data";
 
 const Login = () => {
-  const { login, isLoggingIn } = useAuth();
+  const { user, login, isLoggingIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  // const { user, loading } = useAuth();
+  const location = useLocation();
+
+  const publicRoutes = ["/login", "/forgot-password"];
+
+  if (user && publicRoutes.includes(location.pathname)) {
+    return <Navigate to={sidebarData[0].path} replace />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +69,10 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                  <span
+                    className="eye-icon"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </span>
                 </div>

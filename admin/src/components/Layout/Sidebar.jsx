@@ -1,34 +1,31 @@
 import React from "react";
-import { sidebarData } from "../data/Data";
-import { Link } from "react-router-dom";
-import { FiX } from "react-icons/fi";
-import logo from "../assets/headerLogo.png";
+import { sidebarData } from "../../data/Data";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const pathname = window.location.pathname;
+
+  const location = useLocation();
+  const pathname = location.pathname;
+  let newPath = pathname.split('/')[1];
+  
+  
   
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
-      {/* <div className="sidebar-header">
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-        <button className="sidebar-close-btn" onClick={toggleSidebar}>
-          <FiX size={22} />
-        </button>
-      </div> */}
 
       <div className="sidebar-sections">
         {sidebarData.map((item, index) => {
           const Icon = item.icon;
-          return(
+          let isActive = item.path.split('/')[1].includes(newPath);
+            
+          return(  
           <div key={index} className="sidebar-section">
             <ul className="sidebar-menu">
               <li key={item.id} className="sidebar-item">
                 <Link
                   to={item.path}
-                  className={`sidebar-link ${
-                    pathname.includes(item.path)  ? "active" : ""
+                  className={`sidebar-link ${item.path} ${
+                    isActive  ? "active" : ""
                   }`}
                 >
                   <span className="sidebar-icon">

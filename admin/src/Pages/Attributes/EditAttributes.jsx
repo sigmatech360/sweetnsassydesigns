@@ -54,7 +54,7 @@ const EditAttribute = () => {
         toast.success(res.message || "Attribute updated successfully!");
         navigate(-1);
       } else {
-        toast.error(res.message || "Failed to update category");
+        toast.error(res.message || "Failed to update attribute");
       }
       setIsSubmitting(false);
     },
@@ -157,7 +157,7 @@ const EditAttribute = () => {
                 <div className="col-12  mt-5">
                   <div className="category-form-btn">
                     <button type="submit" disabled={isSubmitting}>
-                      {isSubmitting ? "Updating..." : "Update Category"}
+                      {isSubmitting ? "Updating..." : "Update Attribute"}
                     </button>
                   </div>
                 </div>

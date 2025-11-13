@@ -33,6 +33,7 @@ const EditCategory = () => {
       setFormData({
         title: category.title || "",
         parent_category: category.parent_category || "",
+        slug: category.slug || "",
         thumbnail: `${import.meta.env.VITE_API_BASE_URL}${category.thumbnail}`,
       });
 
@@ -116,7 +117,7 @@ const EditCategory = () => {
             <form onSubmit={handleSubmit}>
               <div className="row">
                 {/* Title */}
-                <div className="col-md-6">
+                <div className="col-md-8 col-lg-6">
                   <div className="category-input-field">
                     <label>Category Title</label>
                     <input
@@ -128,10 +129,17 @@ const EditCategory = () => {
                       required
                     />
                   </div>
-                </div>
-
-                {/* Parent Category */}
-                <div className="col-md-6">
+                  <div className="category-input-field">
+                    <label>Category Slug</label>
+                    <input
+                      type="text"
+                      name="slug"
+                      placeholder="Enter category slug"
+                      value={formData.slug}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
                   <div className="category-input-field">
                     <label>Parent Category (optional)</label>
                     <select
@@ -147,18 +155,12 @@ const EditCategory = () => {
                           <option value={category.id}>{category.title}</option>
                         ))}
                     </select>
-                    {/* <input
-                      type="text"
-                      name="parent_category"
-                      placeholder="Enter parent category ID"
-                      value={formData.parent_category}
-                      onChange={handleChange}
-                    /> */}
                   </div>
                 </div>
 
+
                 {/* Thumbnail Upload */}
-                <div className="col-lg-3 col-md-8">
+                <div className="col-lg-3 col-md-4 ">
                   <div className="category-input-field">
                     <label>Thumbnail Image</label>
                     <input

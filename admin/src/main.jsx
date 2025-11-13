@@ -8,12 +8,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "react-datepicker/dist/react-datepicker.css";
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/sweet-n-sassy/admin/">
+    <BrowserRouter basename="/sweetnsassydesigns/admin/">
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <App />

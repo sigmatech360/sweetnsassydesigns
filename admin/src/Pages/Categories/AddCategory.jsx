@@ -79,7 +79,7 @@ const AddCategory = () => {
           <div className="col-lg-12">
             <form onSubmit={handleSubmit}>
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-8 col-lg-6">
                   <div className="category-input-field">
                     <label>Category Title</label>
                     <input
@@ -91,8 +91,17 @@ const AddCategory = () => {
                       required
                     />
                   </div>
-                </div>
-                <div className="col-md-6">
+                  <div className="category-input-field">
+                    <label>Category Slug</label>
+                    <input
+                      type="text"
+                      name="slug"
+                      placeholder="Enter category slug"
+                      value={formData.slug}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
                   <div className="category-input-field">
                     <label>Parent Category (optional)</label>
                     <select name="parent_category" id="parent_category" value={formData.parent_category} onChange={handleChange}>
@@ -112,7 +121,7 @@ const AddCategory = () => {
                     /> */}
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-8">
+                <div className="col-lg-3 col-md-4">
                   <div className="category-input-field">
                     <label>Thumbnail Image</label>
                     <input

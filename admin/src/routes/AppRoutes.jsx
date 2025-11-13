@@ -25,8 +25,8 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Routes>
-              {/* Default */}
-              {/* <Route path="/" element={<Dashboard/>} /> */}
+              {/* DASHBOARD */}
+              <Route path="/" element={<Dashboard/>} />
               {/* Categories */}
               <Route path="/categories/list" element={<CategoryTable />} />
               <Route path="/categories/add" element={<AddCategory />} />
@@ -44,14 +44,14 @@ const AppRoutes = () => {
               <Route path="/products/list" element={<ProductTable />} />
               <Route path="/product/add" element={<AddProduct />} />
               <Route path="/product/edit/:id" element={<EditAttribute />} />
-              {/* Public routes */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="*" element={<div>Page Not Found</div>} />
             </Routes>
           </ProtectedRoute>
         }
       />
+        {/* Public routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>
   );
 };

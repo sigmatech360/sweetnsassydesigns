@@ -9,6 +9,12 @@ import CategoryTable from "../Pages/Categories/CategoryTable";
 import Dashboard from "../Pages/Dashboard";
 
 export const sidebarData = [
+  // {
+  //   id: 0,
+  //   title: "Dashboard",
+  //   icon: BiSolidDashboard,
+  //   path: "/",
+  // },
   {
     id: 1,
     title: "Categories",

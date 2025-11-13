@@ -8,9 +8,9 @@ import { sidebarData } from "../data/Data";
     const { user, loading } = useAuth();
     const location = useLocation();
 
+    const publicRoutes = ["/login", "/forgot-password"];
     if (loading) return <div className="text-center p-5">Loading...</div>;
 
-    const publicRoutes = ["/login", "/forgot-password"];
 
     if (!user && !publicRoutes.includes(location.pathname)) {
       return <Navigate to="/login" replace />;
