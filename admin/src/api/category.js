@@ -8,14 +8,9 @@ export const getAllCategories = async () => {
   return response.data;
 };
 
-export const addCategory = async (data) => {
+export const addCategory = async (formData) => {
   const token = localStorage.getItem("token");
-  const formData = new FormData();
-  formData.append("title", data.title);
-  formData.append("parent_category", data.parent_category || "");
-  if (data.thumbnail) {
-    formData.append("thumbnail", data.thumbnail);
-  }
+  
 
   const response = await api.post("api/category/store", formData, {
     headers: {

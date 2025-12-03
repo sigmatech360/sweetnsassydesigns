@@ -1,7 +1,7 @@
 import React from "react";
 import "./ScreenLoader.css"; // or use Tailwind if you're using it
 import { RotatingLines } from "react-loader-spinner";
-import logo from "@/assets/headerLogo.webp"; // Adjust the path as necessary
+import logo from "../../assets/images/headerLogo.webp";
 
 const ScreenLoader = () => {
   return (

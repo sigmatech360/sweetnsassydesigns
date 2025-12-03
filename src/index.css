@@ -116,12 +116,17 @@ a {
   object-position: center;
 }
 
-.productCard:hover .productCardImg .img1 {
+.productCardImg:has(img:nth-child(2)):hover > :first-child {
   opacity: 0;
 }
 
-.productCard:hover .productCardImg .img2 {
+.productCardImg:has(img:nth-child(2)):hover > :nth-child(2) {
   opacity: 1;
+}
+
+.productCardImg img {
+  height: 306px;
+  object-fit: cover;
 }
 
 .productCard {
@@ -133,6 +138,10 @@ a {
 .productCardName {
   font-size: 18px;
   font-weight: 600;
+}
+
+.productCard .productCardPrice del{
+  font-size: 12px;
 }
 
 .themeBtn {

@@ -15,6 +15,7 @@ const Attributes = ({formData, setFormData}) => {
   const [attributes, setAttributes] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
   const [searchAttribute, setSearchAttribute] = useState("");
+  const [selectedValues, setSelectedValues]= useState([]);
   const [selectedAttributeList, setSelectedAttributeList] = useState([
       {
         name: "",
@@ -32,6 +33,25 @@ const Attributes = ({formData, setFormData}) => {
     refetchOnMount: true,
   });
 
+  useEffect(() => {
+    if (formData && formData.attributes && formData.attributes.length > 0 && attributesData && attributesData.status) {
+      // setAttributesList(attributesData.data);
+      let attributesList = attributesData.data;
+      let value = attributesList.find(attr => attr.id === formData.attributes[0].id)?.value || [];
+      setSelectedAttributeList([
+        {
+          name: formData.attributes[0].name,
+          slug: formData.attributes[0].slug,
+          value: value,
+          selectedValues: formData.attributes[0].value,
+        }
+      ]);
+      setSelectedValues([formData.attributes[0].value.map(v => ({label: v, value: v}))]);
+
+      
+      
+    }
+  }, [formData, attributesData]);
   useEffect(() => {
     if (attributesData && attributesData.status) {
       setAttributesList(attributesData.data);
@@ -100,12 +120,9 @@ const Attributes = ({formData, setFormData}) => {
     // setFormData({ ...formData, [name]: value });
   };
 
-  const [selectedValues, setSelectedValues]= useState([]);
+
 
   const handleSelectValueChange = (selected, index) => {
-    // setSelectedValues(selected || []);
-    // setSelectedValues((prev) => ([...prev,[selected || []]]));
-    // console.log('selected',selected.map(item=>(item.value)));
 
     setSelectedAttributeList((prev) => {
       // make a shallow copy of the array
@@ -124,6 +141,8 @@ const Attributes = ({formData, setFormData}) => {
       updated[index] = selected; // directly store selected array
       return updated;
     });
+    console.log('selected updated', selected);
+    
     setIsSaved(false)
   };
 
@@ -139,11 +158,18 @@ const Attributes = ({formData, setFormData}) => {
       //   };
       // }
       // return selAttr;
+      if (selAttr.slug) {
+        return {
+          name: selAttr.name,
+          value: selAttr.selectedValues,
+          slug: selAttr.slug,
+        };
+      }
       return {
         name: selAttr.name,
         value: selAttr.selectedValues,
-        visible: selAttr.visible ?? 0,
-        used_for_variation: selAttr.used_for_variation ?? 0,
+        // visible: selAttr.visible ?? 0,
+        // used_for_variation: selAttr.used_for_variation ?? 0,
       };
     });
     setAttributes(attribut);
@@ -154,35 +180,7 @@ const Attributes = ({formData, setFormData}) => {
     // setAttributes
   };
 
-//   const saveAttribute = (e, index) => {
-//     e.preventDefault();
 
-//     if (index !== undefined && index !== null) {
-//       console.log("saving attribute of index", index);
-//       // setSelectedAttributeList((prev) => ([
-//       //   ...prev,
-//       //   [index]: tempAttribute,
-//       // ]));
-//       if (tempAttribute.name != "" && tempAttribute.value.length > 0) {
-//         setSelectedAttributeList((prev) => {
-//           // make a shallow copy of the array
-//           const updated = [...prev];
-
-//           // make a shallow copy of the specific object and update its key
-//           updated[index] = tempAttribute;
-
-//           return updated;
-//         });
-//       }
-//     } else {
-//       console.log("saving attribute without index");
-//       setSelectedAttributeList((prev) => [...prev, tempAttribute]);
-//       setTempAttribute({
-//         name: "",
-//         value: [],
-//       });
-//     }
-//   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -301,7 +299,7 @@ const Attributes = ({formData, setFormData}) => {
                     <div className="col-lg-4 ">
                       <div className="category-input-field">
                         <label>Name:</label>
-                        {item.slug ? (
+                        {item.name == "Gift Card Amount($)" || item.slug ? (
                           <p className="fw-bold m-0">{item.name}</p>
                         ) : (
                           <input
@@ -309,39 +307,15 @@ const Attributes = ({formData, setFormData}) => {
                             placeholder="Name"
                             name="name"
                             required
-                            // value={item.name}
+                            value={item.name}
                             onBlur={(e) => handleAttributeChange(e, index)}
                           />
                         )}
                       </div>
-                      <div className="mt-2">
-                        <label>
-                          <input
-                            type="checkbox"
-                            placeholder="Name"
-                            className="me-2"
-                            name="visible"
-                            onChange={(e) => handleAttributeChange(e, index)}
-                          />
-                          Visible on the product page
-                        </label>
-                      </div>
-                      <div className="mt-2">
-                        <label>
-                          <input
-                            type="checkbox"
-                            placeholder="Name"
-                            className="me-2"
-                            name="used_for_variation"
-                            onChange={(e) => handleAttributeChange(e, index)}
-                          />
-                          Used for variations
-                        </label>
-                      </div>
                     </div>
                     <div className="col-lg-8 category-input-field">
                       <label>Value(s):</label>
-                      {item.slug ? (
+                      {item.name == "Gift Card Amount($)" || item.slug ? (
                         <div>
                           <CustomMultiSelect
                             // label="Select Technologies"

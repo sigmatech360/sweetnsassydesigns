@@ -18,6 +18,10 @@ const ProductTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = useState(false);
+  const [pagination, setPagination] = useState({
+    pageIndex: 1,
+    pageSize: 12,
+  });
 
   // ✅ Fetch categories
   const {
@@ -26,14 +30,15 @@ const ProductTable = () => {
     isSuccess,
     isError,
   } = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
+    queryKey: ["products", pagination.pageIndex],
+    queryFn: () => getAllProducts(pagination.pageIndex),
     refetchOnMount: true,
+    keepPreviousData: true,
   });
 
   // ✅ Filter categories by search
   const filteredData = useMemo(() => {
-    console.log("productsData", productsData);
+    // console.log("productsData", productsData);
 
     const all = productsData?.data || [];
     return all.filter((item) =>
@@ -75,7 +80,9 @@ const ProductTable = () => {
       {
         accessorKey: "price",
         header: "Price",
-        cell: (info) => <span dangerouslySetInnerHTML={{ __html: info.getValue() }} />,
+        cell: (info) => (
+          <span dangerouslySetInnerHTML={{ __html: info.getValue() }} />
+        ),
       },
       {
         accessorKey: "in_stock",
@@ -100,8 +107,8 @@ const ProductTable = () => {
         accessorKey: "status",
         header: "Status",
         cell: ({ row }) => {
-          let {status, updated_at} = row.original;
-          return <span>{status == 1 ? 'Published':'Pending'}</span>;
+          let { status, updated_at } = row.original;
+          return <span>{status == 1 ? "Published" : "Pending"}</span>;
         },
       },
       {
@@ -150,7 +157,7 @@ const ProductTable = () => {
     onSuccess: (res) => {
       if (res.success) {
         toast.success(res.message || "Product deleted successfully!");
-        queryClient.invalidateQueries(["attribute"]); // refresh list
+        queryClient.invalidateQueries(["products"]); // refresh list
       } else {
         toast.error(res.message || "Failed to delete category");
       }
@@ -163,7 +170,7 @@ const ProductTable = () => {
   const handleDelete = (id) => {
     // if (window.confirm("Are you sure you want to delete this category?")) {
     // console.log('deleting id', id);
-    confirmDelete(id, "Are you sure you want to delete this attribute?").then(
+    confirmDelete(id, "Are you sure you want to delete this product?").then(
       (result) => {
         if (result.confirmed) {
           deleteMutation.mutate(id);
@@ -223,6 +230,8 @@ const ProductTable = () => {
             <Table
               data={filteredData}
               totalItems={productsData?.meta?.total}
+              pagination={pagination} // we pass pagination
+              setPagination={setPagination} // table will update server
               columns={columns}
             />
           </div>

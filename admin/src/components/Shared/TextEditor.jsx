@@ -7,13 +7,18 @@ function TextEditor({ handleChange, value, name }) {
 
   const modules = {
     toolbar: [
-      [{ header: [1, 2, 3, 4, false] }], // resizing text
+      [{ header: [1, 2, 3, 4, 5, false] }], // resizing text
       ["bold", "italic"], // bold & italic
       [{ list: "ordered" }, { list: "bullet" }], // lists
       ["clean"], // clear formatting
       ["link"],
+      [{align: []}]
+      ["image,video"]
     ],
   };
+
+  // console.log('name : ',name, ' data', value);
+  
 
   return (
     <>

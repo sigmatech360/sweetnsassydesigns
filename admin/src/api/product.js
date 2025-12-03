@@ -1,8 +1,8 @@
 import api from "./axios";
 
-export const getAllProducts = async () => {
+export const getAllProducts = async (pageIndex) => {
   const token = localStorage.getItem("token");
-  const response = await api.get("api/products", {
+  const response = await api.get(`api/products?page=${pageIndex}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;

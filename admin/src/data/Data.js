@@ -4,9 +4,11 @@ import {
   BiShoppingBag,
   BiArchive,
   BiLockAlt,
+  BiSolidCategory,
 } from "react-icons/bi";
 import CategoryTable from "../Pages/Categories/CategoryTable";
 import Dashboard from "../Pages/Dashboard";
+import { FaTags } from "react-icons/fa6";
 
 export const sidebarData = [
   // {
@@ -18,7 +20,7 @@ export const sidebarData = [
   {
     id: 1,
     title: "Categories",
-    icon: BiArchive,
+    icon: BiSolidCategory,
     path: "/categories/list",
   },
   {
@@ -27,8 +29,14 @@ export const sidebarData = [
     icon: BiArchive,
     path: "/attributes/list",
   },
+  // {
+  //   id: 3,
+  //   title: "Tags",
+  //   icon: FaTags,
+  //   path: "/tags",
+  // },
   {
-    id: 3,
+    id: 4,
     title: "Products",
     icon: BiShoppingBag,
     path: "/products/list",

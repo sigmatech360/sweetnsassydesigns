@@ -11,9 +11,9 @@ const AddCategory = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    title: "",
-    parent_category: "",
-    thumbnail: null,
+    // title: "",
+    // parent_category: "",
+    // thumbnail: null,
   });
 
   const { data: categoriesList = [] } = useQuery({
@@ -35,11 +35,15 @@ const AddCategory = () => {
         setIsLoading(false);
       } else {
         toast.error(res.message || "Failed to add category");
+        
         setIsLoading(false);
       }
     },
     onError: (err) => {
-      toast.error(err.response?.data?.message || "Something went wrong!");
+      for( let error in err.response?.data?.data ){
+        toast.error(err.response?.data?.data[error][0] || "Something went wrong!");
+      }
+      setIsLoading(false);
     },
   });
 
@@ -60,6 +64,8 @@ const AddCategory = () => {
     if (!formData.title) return toast.warning("Please enter a category title");
     // onSubmit(formData);
     setIsLoading(true);
+    // console.log('submitting form', formData);
+    
     mutation.mutate(formData);
   };
   return (
@@ -99,7 +105,7 @@ const AddCategory = () => {
                       placeholder="Enter category slug"
                       value={formData.slug}
                       onChange={handleChange}
-                      required
+                      // required
                     />
                   </div>
                   <div className="category-input-field">

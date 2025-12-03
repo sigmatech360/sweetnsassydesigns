@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
-    <BrowserRouter basename="/sweet-n-sassy">
+    <BrowserRouter basename="/sweetnsassydesigns">
       <AuthProvider>
         <CartProvider>
           <WishlistProvider>

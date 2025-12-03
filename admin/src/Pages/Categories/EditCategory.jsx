@@ -2,7 +2,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { editCategory, getAllCategories, updateCategory } from "../../api/category";
+import {
+  editCategory,
+  getAllCategories,
+  updateCategory,
+} from "../../api/category";
 import BackButton from "../../components/Shared/BackButton";
 import { FaCamera } from "react-icons/fa6";
 import sampleImage from "../../assets/sampleImage.webp";
@@ -17,9 +21,9 @@ const EditCategory = () => {
     thumbnail: null,
   });
   const { data: categoriesList = [] } = useQuery({
-      queryKey: ["categories"],
-      queryFn: getAllCategories,
-    });
+    queryKey: ["categories"],
+    queryFn: getAllCategories,
+  });
   const [preview, setPreview] = useState(sampleImage);
   const { data: categoryData = [], isLoading } = useQuery({
     queryKey: [],
@@ -87,7 +91,11 @@ const EditCategory = () => {
       }
     },
     onError: (err) => {
-      toast.error(err.response?.data?.message || "Something went wrong!");
+      for (let error in err.response?.data?.data) {
+        toast.error(
+          err.response?.data?.data[error][0] || "Something went wrong!"
+        );
+      }
     },
   });
 
@@ -137,7 +145,7 @@ const EditCategory = () => {
                       placeholder="Enter category slug"
                       value={formData.slug}
                       onChange={handleChange}
-                      required
+                      // required
                     />
                   </div>
                   <div className="category-input-field">
@@ -157,7 +165,6 @@ const EditCategory = () => {
                     </select>
                   </div>
                 </div>
-
 
                 {/* Thumbnail Upload */}
                 <div className="col-lg-3 col-md-4 ">

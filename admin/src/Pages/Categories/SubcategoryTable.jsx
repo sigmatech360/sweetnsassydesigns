@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useMemo, useState } from "react";
-import { editCategory } from "../../api/category";
+import { deleteCategory, editCategory } from "../../api/category";
 import { Link, useParams } from "react-router-dom";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaEye } from "react-icons/fa6";
@@ -9,10 +9,13 @@ import { MdDelete } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import Table from "../../components/Shared/Table/Table";
 import BackButton from "../../components/Shared/BackButton";
+import { toast } from "react-toastify";
+import { confirmDelete } from "../../components/Shared/confirmDelete";
 
 const SubcategoryTable = () => {
   const { id } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
+  const queryClient = useQueryClient();
 
   const { data: categoryData = [], isLoading } = useQuery({
     queryKey: [],
@@ -99,6 +102,33 @@ const SubcategoryTable = () => {
     ],
     []
   );
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteCategory,
+    onSuccess: (res) => {
+      if (res.success) {
+        toast.success(res.message || "Category deleted successfully!");
+        queryClient.invalidateQueries(["categories"]); // refresh list
+      } else {
+        toast.error(res.message || "Failed to delete category");
+      }
+    },
+    onError: (err) => {
+      toast.error(err.response?.data?.message || "Something went wrong!");
+    },
+  });
+
+  const handleDeleteCategory = (id) => {
+    // if (window.confirm("Are you sure you want to delete this category?")) {
+    // console.log('deleting id', id);
+    confirmDelete(id, "Are you sure you want to delete this category?").then(
+      (result) => {
+        if (result.confirmed) {
+          deleteMutation.mutate(id);
+        }
+      }
+    );
+  };
   return (
     <section className="category-pg-sec">
       <div className="container">

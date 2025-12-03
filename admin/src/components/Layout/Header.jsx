@@ -9,7 +9,7 @@ import {
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import logo from "../../assets/headerLogo.png";
+import logo from "../../assets/headerLogo.webp";
 import { FiX } from "react-icons/fi";
 
 const Header = ({ toggleSidebar }) => {

@@ -22,8 +22,20 @@ const Table = ({ data, columns }) => {
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
   });
+  // const table = useReactTable({
+  //   data,
+  //   columns,
+  //   state: {
+  //     pagination,
+  //   },
+  //   manualPagination: true, // ⭐ server mode ON
+  //   pageCount: Math.ceil(totalItems / pagination.pageSize),
+  //   onPaginationChange: setPagination,
+  //   getCoreRowModel: getCoreRowModel(),
+  //   getPaginationRowModel: getPaginationRowModel(),
+  // });
   return (
-    <>
+    <div className="table-content">
       <table className="table align-middle">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -63,7 +75,7 @@ const Table = ({ data, columns }) => {
         </tbody>
       </table>
       <TablePagination table={table} />
-    </>
+    </div>
   );
 };
 
