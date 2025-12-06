@@ -4,6 +4,7 @@ import { getAllAttributes } from "../../../api/attribute";
 import { FaCaretDown } from "react-icons/fa6";
 import { Accordion } from "react-bootstrap";
 import CustomMultiSelect from "../../../components/Shared/CustomMultiSelect";
+import { toast } from "react-toastify";
 
 const Attributes = ({formData, setFormData}) => {
   const dropdownRef = useRef(null);
@@ -34,7 +35,7 @@ const Attributes = ({formData, setFormData}) => {
   });
 
   useEffect(() => {
-    if (formData && formData.attributes && formData.attributes.length > 0 && attributesData && attributesData.status) {
+    if (formData && formData.attributes && formData.attributes.length > 0 && attributesData && attributesData.status && selectedAttributeList[0].value.length == 0 ) {
       // setAttributesList(attributesData.data);
       let attributesList = attributesData.data;
       let value = attributesList.find(attr => attr.id === formData.attributes[0].id)?.value || [];
@@ -172,10 +173,11 @@ const Attributes = ({formData, setFormData}) => {
         // used_for_variation: selAttr.used_for_variation ?? 0,
       };
     });
-    setAttributes(attribut);
+    // setAttributes(attribut);
     setFormData((prev)=>({...prev, attributes: attribut}))
-    console.log("attribut", attribut);
+    // console.log("attribut", attribut);
     setIsSaved(true)
+    toast.success("Attributes saved successfully!");
 
     // setAttributes
   };
@@ -229,13 +231,6 @@ const Attributes = ({formData, setFormData}) => {
               {attributesList &&
                 attributesList.length > 0 &&
                 attributesList
-                //   .filter(
-                //     (attr) =>
-                //       attr.name
-                //         .toLowerCase()
-                //         .includes(searchAttribute.toLowerCase()) &&
-                //       !selectedAttributeList.some((item) => item.id == attr.id)
-                //   )
                   .map((attr, index) => (
                     <p
                       key={attr.id}
@@ -324,9 +319,11 @@ const Attributes = ({formData, setFormData}) => {
                               value: v,
                             }))}
                             value={selectedValues[index]}
-                            onChange={(selected) =>
+                            onChange={(selected) =>{
+                              console.log('item.value', item.value);
+                              
                               handleSelectValueChange(selected, index)
-                            }
+                            }}
                             placeholder="Choose multiple..."
                           />
                         </div>

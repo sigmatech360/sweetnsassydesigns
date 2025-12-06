@@ -196,17 +196,6 @@ const ProductTable = () => {
             <div className="pg-head">
               <h4>Products</h4>
               <div className="category-searchadd-flex">
-                {/* <div className="category-search-box">
-                  <input
-                    type="text"
-                    placeholder="Search category..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                  <span>
-                    <IoSearch />
-                  </span>
-                </div> */}
                 <Link to={`/product/add`} className="btn-primary">
                   + Add Product
                 </Link>

@@ -11,7 +11,7 @@ const TablePagination = ({ table }) => {
 
   // ✅ Calculate visible pages (max 5)
   const visiblePages = () => {
-    const maxVisible = 5;
+    const maxVisible = 3;
     let start = Math.max(1, pageIndex + 1 - Math.floor(maxVisible / 2));
     let end = start + maxVisible - 1;
 

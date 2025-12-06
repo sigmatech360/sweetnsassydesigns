@@ -47,6 +47,7 @@ const Home = () => {
                         }`}
                         alt={item.title}
                         className="img1 img-fluid"
+                        loading="lazy"
                       />
                       {item.images.length > 1 && (
                         <img
@@ -55,6 +56,7 @@ const Home = () => {
                           }`}
                           alt={item.title}
                           className="img2 img-fluid"
+                          loading="lazy"
                         />
                       )}
                     </div>{" "}

@@ -17,6 +17,7 @@ import ProductTable from "../Pages/Products/ProductTable";
 import AddProduct from "../Pages/Products/AddProduct";
 import EditProduct from "../Pages/Products/EditProduct";
 import Tags from "../Pages/Tags";
+import Home from "../Pages/Home";
 
 const AppRoutes = () => {
   return (
@@ -49,6 +50,7 @@ const AppRoutes = () => {
 
               {/* Tags */}
               <Route path="/tags" element={<Tags />} />
+              <Route path="/page/home" element={<Home />} />
             </Routes>
           </ProtectedRoute>
         }

@@ -10,7 +10,7 @@ import ScreenLoader from "../../components/ScreenLoader/ScreenLoader";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["products"],
     queryFn: getAllProducts,
   });
@@ -37,12 +37,12 @@ const Shop = () => {
   // get pagination numbers
   const paginationRange = getPaginationRange(currentPage, totalPages);
 
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 4000);
-  }, [currentPage]);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 4000);
+  // }, [currentPage]);
 
   return (
     <DefaultLayout>
@@ -82,7 +82,7 @@ const Shop = () => {
               </select>
             </div>
           </div>
-          {isLoading && <ScreenLoader />}
+          {(isLoading || isPending) && <ScreenLoader />}
 
           {currentProducts.map((item, index) => (
             <div className="col-lg-3 col-md-6 mb-4" key={index}>
@@ -95,6 +95,7 @@ const Shop = () => {
                     }`}
                     alt={item.title}
                     className="img1 img-fluid"
+                    loading="lazy"
                   />
                   {item.images.length > 1 && (
                     <img
@@ -104,6 +105,7 @@ const Shop = () => {
                       }`}
                       alt={item.title}
                       className="img2 img-fluid"
+                      loading="lazy"
                     />
                   )}
 

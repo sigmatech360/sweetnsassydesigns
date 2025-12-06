@@ -1267,3 +1267,7 @@ font-size: 18px !important;
   justify-content: center;
   cursor: pointer;
 }
+
+.dropdown_multi{
+  height: 12rem;
+}

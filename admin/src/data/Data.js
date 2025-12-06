@@ -9,6 +9,7 @@ import {
 import CategoryTable from "../Pages/Categories/CategoryTable";
 import Dashboard from "../Pages/Dashboard";
 import { FaTags } from "react-icons/fa6";
+import { MdOutlineLibraryBooks } from "react-icons/md";
 
 export const sidebarData = [
   // {
@@ -29,18 +30,24 @@ export const sidebarData = [
     icon: BiArchive,
     path: "/attributes/list",
   },
-  // {
-  //   id: 3,
-  //   title: "Tags",
-  //   icon: FaTags,
-  //   path: "/tags",
-  // },
+  {
+    id: 3,
+    title: "Tags",
+    icon: FaTags,
+    path: "/tags",
+  },
   {
     id: 4,
     title: "Products",
     icon: BiShoppingBag,
     path: "/products/list",
   },
+  // {
+  //   id: 4,
+  //   title: "Home Page",
+  //   icon: MdOutlineLibraryBooks,
+  //   path: "/page/home",
+  // },
   // { id: 1, title: "Dashboard", icon: BiSolidDashboard, path: "/", component: Dashboard,isProtected: true,},
   // { id: 3, title: "Forgot Password", icon: BiLockAlt, path: "/forgot-password", component: ForgotPassword, isProtected: false,},
 ];
